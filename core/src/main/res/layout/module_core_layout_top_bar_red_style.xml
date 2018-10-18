@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<com.aliya.view.fitsys.FitWindowsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    android:minHeight="@dimen/toolbar_normal_height"
+    app:fitType="top">
+
+    <ImageView
+        android:id="@+id/iv_top_bar_back"
+        android:layout_width="42dp"
+        android:layout_height="@dimen/toolbar_normal_height"
+        android:background="?attr/actionBarItemBackground"
+        android:paddingRight="7dp"
+        android:scaleType="center"
+        android:src="@mipmap/ic_top_bar_back_white" />
+
+    <TextView
+        android:id="@+id/tv_top_bar_title"
+        style="@style/ToolbarTitle"
+        android:textColor="@color/tc_ffffff"
+        tools:text="自定义ToolBar" />
+
+    <LinearLayout
+        android:id="@+id/right_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/toolbar_normal_height"
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:paddingRight="2dp">
+
+        <ImageView
+            android:id="@+id/iv_top_collect"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/module_core_ic_top_bar_collect" />
+
+        <ImageView
+            android:id="@+id/iv_top_share"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@mipmap/module_core_topbar_share" />
+    </LinearLayout>
+</com.aliya.view.fitsys.FitWindowsFrameLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@mipmap/module_core_ic_collect_night"
+        android:maxLevel="@integer/level_collect_off" />
+    <item
+        android:drawable="@mipmap/module_core_ic_collect_pressed_night"
+        android:maxLevel="@integer/level_collect_on" />
+</level-list>

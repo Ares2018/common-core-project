@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_service"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="2dp"
+        android:background="?attr/actionBarItemBackground"
+        android:padding="10dp"
+        android:src="@mipmap/module_core_ic_main_bar_service" />
+
+    <View
+        android:id="@+id/dot_service"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="11dp"
+        android:layout_marginLeft="34dp"
+        android:background="@drawable/oval_ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="39dp"
+        android:text="服务"
+        android:textColor="@color/tc_ffffff"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tv_ui_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/toolbar_normal_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="80dp"
+        android:gravity="center"
+        android:text="日/夜"
+        android:textColor="@color/tc_ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/toolbar_normal_height"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="浙江新闻"
+        android:textColor="@color/tc_ffffff"
+        android:textSize="@dimen/ts_17sp" />
+
+    <View
+        android:id="@+id/dot_mine"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginBottom="11dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/oval_ffffff" />
+
+    <ImageView
+        android:id="@+id/iv_mine"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="2dp"
+        android:background="?attr/actionBarItemBackground"
+        android:padding="10dp"
+        android:src="@mipmap/module_core_ic_main_bar_mine" />
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="42dp"
+        android:background="?attr/actionBarItemBackground"
+        android:padding="10dp"
+        android:src="@mipmap/module_core_ic_main_bar_search" />
+</merge>

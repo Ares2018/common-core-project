@@ -1,0 +1,174 @@
+<resources>
+
+
+    <style name="CoreTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!--防止Buttom的文字变大写-->
+        <item name="android:textAllCaps">false</item>
+        <!--文字超出限制后默认显示...-->
+        <item name="android:ellipsize">end</item>
+        <!--Activity窗口的颜色-->
+        <item name="android:windowBackground">@null</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!--边缘手势样式兼容5.0以下系统-->
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--设置Activity全局动画-->
+        <item name="android:windowAnimationStyle">@style/DefWindowAnimation</item>
+
+        <!--修改系统滚动条样式-->
+        <item name="android:scrollbarThumbVertical">@drawable/scroll_bar_vertical</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/scroll_bar_horizontal</item>
+    </style>
+
+    <style name="CoreThemeNight" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="colorPrimary">@color/colorPrimary_night</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_night</item>
+
+        <!--防止Buttom的文字变大写-->
+        <item name="android:textAllCaps">false</item>
+        <!--文字超出限制后默认显示...-->
+        <item name="android:ellipsize">end</item>
+        <!--Activity窗口的颜色-->
+        <item name="android:windowBackground">@null</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!--边缘手势样式兼容5.0以下系统-->
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--设置Activity全局动画-->
+        <item name="android:windowAnimationStyle">@style/DefWindowAnimation</item>
+
+        <!--修改系统滚动条样式-->
+        <item name="android:scrollbarThumbVertical">@drawable/scroll_bar_vertical</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/scroll_bar_horizontal</item>
+    </style>
+
+    <style name="CoreTheme.Base"></style>
+
+    <style name="CoreThemeNight.Base"></style>
+
+    <!-- 边缘手势显示桌面解决方案 -->
+    <style name="AppMainTheme" parent="CoreTheme.Base">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- Activity切换动画 - 样式 -->
+    <style name="DefWindowAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+
+
+    <!--swipeBack属性-->
+    <style name="SwipeBackLayout">
+        <item name="edge_size">15dip</item>
+        <item name="shadow_left">@mipmap/module_core_shadow_left</item>
+        <item name="shadow_right">@mipmap/module_core_shadow_right</item>
+        <item name="shadow_bottom">@mipmap/module_core_shadow_bottom</item>
+    </style>
+
+    <style name="ToolbarTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/toolbar_normal_height</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/ts_17sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginLeft">@dimen/toolbar_normal_height</item>
+        <item name="android:layout_marginRight">@dimen/toolbar_normal_height</item>
+    </style>
+
+    <!--方形水波纹背景样式 -->
+    <style name="BtnBgSquare">
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!--Toolbar 原生Back键 颜色控制-->
+    <style name="ToolbarTheme1">
+        <item name="colorControlNormal">@color/color_3b424c</item>
+        <item name="android:textColor">@color/color_3b424c</item>
+    </style>
+
+    <!--Toolbar 原生Back键 颜色控制-->
+    <style name="ToolbarTheme2">
+        <item name="colorControlNormal">@color/color_484848</item>
+        <item name="android:textColor">@color/color_484848</item>
+
+    </style>
+
+    <style name="LoadingIndicatorView">
+        <item name="minWidth">25dip</item>
+        <item name="maxWidth">25dip</item>
+        <item name="minHeight">25dip</item>
+        <item name="maxHeight">25dip</item>
+    </style>
+
+    <!--确定对话框样式-->
+    <style name="confirm_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@drawable/border_ffffff_r10</item>
+    </style>
+
+    <!--全屏对话框样式-->
+    <style name="fullscreen_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@drawable/border_66000000</item>
+    </style>
+
+    <!--屏幕底部的dialog-->
+    <style name="BottomToTopAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/module_core_bottomview_anim_enter</item>
+        <item name="android:windowExitAnimation">@anim/module_core_bottomview_anim_exit</item>
+    </style>
+
+    <style name="BottomDialog" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/BottomToTopAnim</item>
+    </style>
+
+    <!--新闻详情页 点击更多 设置字体大小-->
+    <style name="set_font_size_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/tc_484848</item>
+        <item name="android:background">@null</item>
+    </style>
+
+
+    <!--<style name="CoreDayTheme">-->
+        <!--<item name="module_core_ic_top_bar_collect">@drawable/module_core_ic_top_bar_collect</item>-->
+    <!--</style>-->
+
+    <!--<style name="CoreNightTheme">-->
+        <!--<item name="module_core_ic_top_bar_collect">@drawable/module_core_ic_top_bar_collect_night-->
+        <!--</item>-->
+    <!--</style>-->
+
+    <style name="AuthorityDialog" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
+    </style>
+
+</resources>

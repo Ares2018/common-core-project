@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ly_scaner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_scaner_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bc_f8f8f8"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="识别二维码"
+            android:textColor="@color/tc_484848"
+            android:textSize="@dimen/ts_12sp" />
+
+        <View
+            android:id="@+id/v_line1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dc_d8d8d8" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_save_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bc_f8f8f8"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:text="保存图片"
+        android:textColor="@color/tc_484848"
+        android:textSize="@dimen/ts_12sp" />
+
+    <View
+        android:id="@+id/v_line2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dc_d8d8d8" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bc_ffffff"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:text="取消"
+        android:textColor="@color/tc_484848"
+        android:textSize="@dimen/ts_12sp" />
+</LinearLayout>

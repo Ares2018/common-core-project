@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fy_container"
+    android:layout_width="match_parent"
+    android:layout_height="66dp">
+
+    <LinearLayout
+        android:id="@+id/layout_more_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+        <com.zjrb.core.load.indicator.LoadingIndicatorView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorColor="@color/tc_484848"
+            app:maxHeight="25dp"
+            app:maxWidth="25dp"
+            app:minHeight="25dp"
+            app:minWidth="25dp" />
+
+        <TextView
+            android:id="@+id/tv_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:maxLines="1"
+            android:text="加载中"
+            android:textColor="@color/tc_484848"
+            android:textSize="@dimen/ts_11sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_more_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_retry"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="加载失败，点击重试"
+            android:textColor="@color/tc_484848"
+            android:textSize="@dimen/ts_11sp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/layout_no_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="没有更多"
+        android:textColor="@color/tc_484848"
+        android:textSize="@dimen/ts_11sp"
+        android:visibility="gone" />
+</FrameLayout>

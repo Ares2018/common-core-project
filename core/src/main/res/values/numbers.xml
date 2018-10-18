@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="window_anim_time" format="integer" type="integer">200</item>
+
+    <item name="level_collect_off" format="integer" type="integer">1</item>
+    <item name="level_collect_on" format="integer" type="integer">2</item>
+</resources>

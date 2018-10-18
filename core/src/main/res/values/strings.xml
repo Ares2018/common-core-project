@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">CoreProjectLibrary</string>
+    <string name="module_core_loading">加载中...</string>
+    <string name="module_core_load_error">加载失败,点击重试</string>
+
+    <string name="module_core_tip_ok">确定</string>
+    <string name="module_core_tip_cancel">取消</string>
+    <string name="module_core_tip_search">搜索</string>
+    <string name="module_core_tip_permission_denied">权限被拒绝</string>
+    <string name="module_core_zb_login_dialog_successful">登录成功</string>
+    <string name="module_corTe_zb_login_dialog_failed">登录失败</string>
+
+    <string name="module_core_alert_most_images">你最多只能选择%1$d个素材</string>
+
+    <!--普通页面 scheme 用 http-->
+    <string name="data_scheme">http</string>
+    <string name="data_scheme_https">https</string>
+
+    <string name="data_host">www.8531.cn</string>
+    <string name="data_host1">apibeta.8531.cn</string>
+    <string name="data_host_zjol">zj.zjol.com.cn</string>
+    <string name="data_host_zj">zj.8531.cn</string>
+
+
+    <string name="error_invalid_apk_url">无效的URL</string>
+    <string name="error_invalid_apk_file">不是有效的安装包</string>
+    <string name="module_core_comment_content_empty">评论内容不能为空</string>
+    <string name="module_core_replay_to">回复</string>
+    <string name="module_core_send_comment">发表评论</string>
+
+    <string name="module_core_font_size_preview">这里是预览效果</string>
+    <string name="module_detail_comment_window_hint">我来说两句（评论内容不少于5个字）</string>
+    <string name="module_core_share_content_from">来自浙江新闻客户端</string>
+
+    <string name="module_core_share_success">分享成功</string>
+    <string name="module_core_share_failed">分享失败</string>
+    <string name="module_core_test_too_long">文字过长</string>
+    <string name="module_core_save_pic">保存图片</string>
+    <string name="module_core_save_cancel">取消</string>
+    <string name="module_core_collect_success">收藏成功</string>
+    <string name="module_core_collect_failed">收藏失败</string>
+    <string name="module_core_download_success">下载成功</string>
+    <string name="module_core_download_failed">下载失败</string>
+    <string name="module_core_audio_start_play">点击播放</string>
+    <string name="module_core_audio_start_record">点击录音</string>
+    <string name="module_core_audio_record_stop">点击结束</string>
+    <string name="module_core_audio_play_pause">点击暂停</string>
+    <string name="intent_action_login_receiver">cn.daily.intent.action.LOGIN</string>
+    <string name="intent_action_close_video">cn.daily.intent.action.CLOSEVIDEO</string>
+    <string name="intent_action_open_video">cn.daily.intent.action.OPENVIDEO</string>
+    <string name="env_default">apibeta.8531.cn</string>
+    <string name="module_core_scaner_error">未找到二维码</string>
+    <string name="module_core_scaner_read_error">二维码读取失败</string>
+    <string name="authority_tip">您已拒绝了%1$s，请在手机系统中开启浙江新闻的%2$s</string>
+</resources>
