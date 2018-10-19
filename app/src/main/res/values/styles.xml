@@ -6,13 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="tc_ffffff">@color/tc_ffffff</item>
-
-        <item name="module_core_image_load">@mipmap/module_core_ic_load_zhe</item>
-        <item name="module_core_image_load_text_color">@color/module_core_image_load_text_color
-        </item>
-
     </style>
 
 </resources>

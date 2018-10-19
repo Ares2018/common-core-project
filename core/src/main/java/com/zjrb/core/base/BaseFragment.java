@@ -43,8 +43,12 @@ public abstract class BaseFragment extends Fragment implements IPermissionOperat
 
     /**
      * 替换加载View
+     *
+     * @param pageView 需要替换成加载View的该页面View
      */
-    abstract ILoad replaceLoad(ViewGroup container);
+    public ILoad replaceLoad(View pageView) {
+        return replaceLoad(container,pageView);
+    }
 
     /**
      * 替换加载View
