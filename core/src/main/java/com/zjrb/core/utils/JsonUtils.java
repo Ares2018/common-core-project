@@ -30,6 +30,17 @@ public class JsonUtils {
     }
 
     /**
+     * 根据Type 解析JSON 字符串
+     * @param jsonString
+     * @param type
+     * @param <T>
+     * @return
+     */
+    public static <T> T parseObject(String jsonString, Type type) {
+        return gson.fromJson(jsonString, type);
+    }
+
+    /**
      * jsonElement解析成对象
      *
      * @param json jsonElement
