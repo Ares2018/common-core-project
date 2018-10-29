@@ -14,6 +14,6 @@ allprojects {
 > 2、 Module build.gradle  
 
 ```
-compile 'cn.daily.android:core-library:0.0.6-SNAPSHOT'
+compile 'cn.daily.android:common-core:0.0.1-SNAPSHOT'
 
 ```
