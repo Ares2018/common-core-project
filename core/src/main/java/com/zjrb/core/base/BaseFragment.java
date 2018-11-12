@@ -2,7 +2,6 @@ package com.zjrb.core.base;
 
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.ViewGroup;
 import com.zjrb.core.R;
 import com.zjrb.core.permission.IPermissionOperate;
 import com.zjrb.core.permission.PermissionManager;
-import com.zjrb.core.load.ILoad;
 
 import java.lang.reflect.Field;
 
@@ -39,31 +37,6 @@ public abstract class BaseFragment extends Fragment implements IPermissionOperat
                 this.container = (ViewGroup) view.getParent();
             }
         }
-    }
-
-    /**
-     * 替换加载View
-     *
-     * @param pageView 需要替换成加载View的该页面View
-     */
-    public ILoad replaceLoad(View pageView) {
-        return replaceLoad(container,pageView);
-    }
-
-    /**
-     * 替换加载View
-     *
-     * @param pageView 需要替换成加载View的该页面View
-     */
-    abstract public ILoad replaceLoad(ViewGroup parent,View pageView);
-
-    /**
-     * 替换加载View
-     *
-     * @param id 需要替换成加载View的该页面View的id
-     */
-    public ILoad replaceLoad(@IdRes int id) {
-        return replaceLoad(container,findViewById(id));
     }
 
     /**

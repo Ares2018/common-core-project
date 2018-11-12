@@ -10,7 +10,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -19,17 +18,16 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.zjrb.core.R;
 import com.zjrb.core.base.BaseActivity;
-import com.zjrb.core.recycleView.listener.OnItemClickListener;
-import com.zjrb.core.utils.PathManager;
+import com.zjrb.core.dialog.DialogFragmentImpl;
+import com.zjrb.core.dialog.OkDialog;
 import com.zjrb.core.permission.AbsPermCallBack;
 import com.zjrb.core.permission.AbsPermSingleCallBack;
 import com.zjrb.core.permission.Permission;
 import com.zjrb.core.permission.PermissionManager;
-import com.zjrb.core.dialog.DialogFragmentImpl;
-import com.zjrb.core.dialog.OkDialog;
+import com.zjrb.core.recycleView.listener.OnItemClickListener;
 import com.zjrb.core.ui.divider.GridSpaceDivider;
-import com.zjrb.core.load.ILoad;
 import com.zjrb.core.utils.AppUtils;
+import com.zjrb.core.utils.PathManager;
 import com.zjrb.core.utils.click.ClickTracker;
 
 import java.io.File;
@@ -96,11 +94,6 @@ public class MediaSelectActivity extends BaseActivity implements View.OnClickLis
                 onBackPressed();
             }
         }, Permission.STORAGE_READE);
-    }
-
-    @Override
-    public ILoad replaceLoad(ViewGroup parent, View pageView) {
-        return null;
     }
 
     @Override
