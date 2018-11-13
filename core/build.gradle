@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
-apply from: 'http://10.100.62.98:8086/nexus/service/local/artifact/maven/redirect?r=releases&g=cn.daily.android&a=publish&e=gradle&v=0.0.4'
+apply from: 'http://10.100.62.98:8086/nexus/service/local/artifact/maven/redirect?r=releases&g=cn.daily.android&a=publish&e=gradle&v=0.0.6'
 
 android {
     compileSdkVersion 28
@@ -21,6 +21,10 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -32,7 +36,6 @@ dependencies {
     implementation 'com.aliya:bannerview:0.1.1'
     implementation 'com.google.code.gson:gson:2.6.2'
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
     implementation 'cn.core.android:core-glide:1.0.0'
 }
