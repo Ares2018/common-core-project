@@ -26,7 +26,7 @@ public abstract class ToolBarActivity extends SwipeBackActivity {
     /**
      * 根布局容器
      */
-    private ViewGroup mRootContainer;
+    protected ViewGroup mRootContainer;
 
     /**
      * 自己的根布局
