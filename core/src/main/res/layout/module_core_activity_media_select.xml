@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -22,7 +21,8 @@
             android:background="?attr/actionBarItemBackground"
             android:paddingRight="7dp"
             android:scaleType="center"
-            android:src="@mipmap/ic_top_bar_back_white" />
+            android:src="@mipmap/ic_top_bar_back_white"
+            app:maskColor="@android:color/transparent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,14 +30,14 @@
             android:layout_marginLeft="27dp"
             android:gravity="center_vertical"
             android:text="照片"
-            android:textColor="@color/tc_ffffff"
+            android:textColor="@color/_ffffff_7a7b7d"
             android:textSize="@dimen/ts_15sp" />
 
         <TextView
             android:id="@+id/tv_title"
             style="@style/ToolbarTitle"
             android:text="所有照片"
-            android:textColor="@color/tc_ffffff" />
+            android:textColor="@color/_ffffff_7a7b7d" />
 
         <TextView
             android:id="@+id/tv_complete"
@@ -49,8 +49,9 @@
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:text="完成"
-            android:textColor="@color/tc_ffffff"
+            android:textColor="@color/_ffffff_7a7b7d"
             android:textSize="@dimen/ts_15sp" />
+
     </com.aliya.view.fitsys.FitWindowsFrameLayout>
 
     <com.aliya.view.fitsys.FitWindowsRecyclerView
@@ -58,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/top_bar"
-        android:background="@color/bc_ffffff"
+        android:background="@color/_ffffff_202124"
         android:clipToPadding="true"
         app:fitType="bottom" />
 
@@ -73,5 +74,7 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </FrameLayout>
+
 </RelativeLayout>

@@ -3,8 +3,9 @@ package com.zjrb.core.ui.divider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 
@@ -17,21 +18,20 @@ import android.util.TypedValue;
  */
 public abstract class AbsSpaceDivider extends RecyclerView.ItemDecoration {
 
-    private int mAttrId = NO_ATTR_ID;
+    private int mColorId = NO_ATTR_ID;
     protected int mCurrColor = Color.TRANSPARENT;
 
-    private static final TypedValue sOutValue = new TypedValue();
     protected static final int NO_ATTR_ID = -1;
 
     protected AbsSpaceDivider(@ColorInt int color) {
         mCurrColor = color;
     }
 
-    protected AbsSpaceDivider(@ColorInt@AttrRes int colorOrAttrId, boolean isAttrId) {
-        if (isAttrId) {
-            mAttrId = colorOrAttrId;
+    protected AbsSpaceDivider(@ColorRes@ColorInt int colorOrColorId, boolean isColorId) {
+        if (isColorId) {
+            mColorId = colorOrColorId;
         } else {
-            mCurrColor = colorOrAttrId;
+            mCurrColor = colorOrColorId;
         }
     }
 
@@ -41,18 +41,8 @@ public abstract class AbsSpaceDivider extends RecyclerView.ItemDecoration {
      * @return Color的int值
      */
     public int getUiModeColor(Context context) {
-        if (context != null && mAttrId != NO_ATTR_ID) {
-            if (null != context.getTheme()) {
-                context.getTheme().resolveAttribute(mAttrId, sOutValue, true);
-                switch (sOutValue.type) {
-                    case TypedValue.TYPE_INT_COLOR_ARGB4:
-                    case TypedValue.TYPE_INT_COLOR_ARGB8:
-                    case TypedValue.TYPE_INT_COLOR_RGB4:
-                    case TypedValue.TYPE_INT_COLOR_RGB8:
-                        mCurrColor = sOutValue.data;
-                        break;
-                }
-            }
+        if (context != null && mColorId != NO_ATTR_ID) {
+            return ContextCompat.getColor(context, mColorId);
         }
         return mCurrColor;
     }

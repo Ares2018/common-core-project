@@ -3,7 +3,7 @@
     <item android:id="@android:id/background">
         <shape>
             <!-- 填充的颜色，颜色为自定义 -->
-            <solid android:color="@color/bc_878686" />
+            <solid android:color="@color/_878686" />
         </shape>
     </item>
 
@@ -11,7 +11,7 @@
         <clip>
             <shape>
                 <!-- 填充的颜色 -->
-                <solid android:color="@color/bc_f44b50" />
+                <solid android:color="@color/_f44b50" />
             </shape>
         </clip>
     </item>

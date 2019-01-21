@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,7 +15,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
-        android:textColor="#484848"
+        android:textColor="@color/_484848_7a7b7d"
         android:textSize="@dimen/ts_14sp" />
 
     <TextView
@@ -31,13 +30,13 @@
         android:ellipsize="end"
         android:gravity="center"
         android:lineSpacingExtra="3dp"
-        android:textColor="#484848"
+        android:textColor="@color/_484848_7a7b7d"
         android:textSize="@dimen/ts_14sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1.5dp"
-        android:background="#dddddd" />
+        android:background="@color/_dddddd_343434" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,13 +50,13 @@
             android:layout_weight="1"
             android:background="@null"
             android:text="@string/module_core_tip_cancel"
-            android:textColor="#484848"
+            android:textColor="@color/_484848_7a7b7d"
             android:textSize="@dimen/ts_14sp" />
 
         <View
             android:layout_width="1.5dp"
             android:layout_height="match_parent"
-            android:background="#dddddd" />
+            android:background="@color/_dddddd_343434" />
 
         <Button
             android:id="@+id/btn_right"
@@ -66,7 +65,9 @@
             android:layout_weight="1"
             android:background="@null"
             android:text="@string/module_core_tip_ok"
-            android:textColor="#f44b50"
+            android:textColor="@color/_f44b50_8e3636"
             android:textSize="@dimen/ts_14sp" />
+
     </LinearLayout>
+
 </LinearLayout>

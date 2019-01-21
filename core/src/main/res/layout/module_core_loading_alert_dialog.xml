@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="99dp"
@@ -16,7 +15,8 @@
         android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/module_core_comment_send_clickable" />
+        android:src="@mipmap/module_core_comment_send_clickable"
+        app:maskColor="@color/_00000000_7a7b7c" />
 
     <TextView
         android:id="@+id/tv_toast"
@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="正在处理"
-        android:textColor="@color/tc_ffffff"
+        android:textColor="@color/_ffffff_7a7b7d"
         android:textSize="@dimen/ts_14sp" />
+
 </LinearLayout>

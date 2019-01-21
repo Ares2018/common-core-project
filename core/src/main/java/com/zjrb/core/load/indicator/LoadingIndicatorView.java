@@ -13,10 +13,12 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
+import com.aliya.uimode.intef.UiModeChangeListener;
 import com.zjrb.core.R;
 import com.zjrb.core.utils.L;
 
@@ -27,7 +29,7 @@ import com.zjrb.core.utils.L;
  * @author a_liYa
  * @date 16/8/23 上午10:46.
  */
-public class LoadingIndicatorView extends View implements com.aliya.uimode.intef.UiModeChangeListener {
+public class LoadingIndicatorView extends View implements UiModeChangeListener {
 
     private static final String TAG = "LoadingIndicatorView";
 

@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.zjrb.core.recycleView.adapter.CompatAdapter;
 
+
 /**
  * Grid 分割线
  *
@@ -38,24 +39,24 @@ public class GridSpaceDivider extends AbsSpaceDivider {
     }
 
     /**
-     * @param spaceDip      间隔距离 单位 : dip
-     * @param colorOrAttrId 分割线color或attrId
-     * @param isAttrId      true:表示是attrId；false:表示是Color
+     * @param spaceDip       间隔距离 单位 : dip
+     * @param colorOrColorId 分割线color或colorId
+     * @param isColorId      true:表示是colorId；false:表示是Color
      */
-    public GridSpaceDivider(float spaceDip, int colorOrAttrId, boolean isAttrId) {
-        this(spaceDip, colorOrAttrId, false, isAttrId);
+    public GridSpaceDivider(float spaceDip, int colorOrColorId, boolean isColorId) {
+        this(spaceDip, colorOrColorId, false, isColorId);
     }
 
     /**
-     * @param spaceDip      间隔距离 单位 : dip
-     * @param colorOrAttrId 分割线color或attrId
-     * @param includeEdge   是否包括边缘 true 包含
-     * @param isAttrId      true:表示是attrId；false:表示是Color
+     * @param spaceDip       间隔距离 单位 : dip
+     * @param colorOrColorId 分割线color或colorId
+     * @param includeEdge    是否包括边缘 true 包含
+     * @param isColorId      true:表示是colorId；false:表示是Color
      */
-    public GridSpaceDivider(float spaceDip, int colorOrAttrId, boolean includeEdge,
-                            boolean isAttrId) {
-        super(colorOrAttrId, isAttrId);
-        if (isAttrId || colorOrAttrId != Color.TRANSPARENT) {
+    public GridSpaceDivider(float spaceDip, int colorOrColorId, boolean includeEdge,
+                            boolean isColorId) {
+        super(colorOrColorId, isColorId);
+        if (isColorId || colorOrColorId != Color.TRANSPARENT) {
             mPaint = new Paint();
             mPaint.setAntiAlias(true); // 设置画笔抗锯齿
         }

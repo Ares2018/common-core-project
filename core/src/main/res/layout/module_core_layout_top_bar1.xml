@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <com.aliya.view.fitsys.FitWindowsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_title_bar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bc_ffffff"
+    android:background="@color/_ffffff_202124"
     android:fitsSystemWindows="true"
     android:minHeight="@dimen/toolbar_normal_height"
     app:fitType="top">
@@ -18,13 +17,14 @@
         android:background="?attr/actionBarItemBackground"
         android:paddingRight="7dp"
         android:scaleType="center"
-        android:src="@mipmap/ic_top_bar_back_dark" />
+        android:src="@mipmap/ic_top_bar_back_dark"
+        app:maskColor="@android:color/transparent" />
 
     <TextView
         android:id="@+id/tv_top_bar_title"
         style="@style/ToolbarTitle"
         android:layout_centerInParent="true"
-        android:textColor="@color/tc_484848"
+        android:textColor="@color/_484848_7a7b7d"
         android:visibility="gone"
         tools:text="自定义ToolBar" />
 
@@ -35,7 +35,8 @@
         android:layout_gravity="right"
         android:scaleType="center"
         android:src="@mipmap/module_core_topbar_share"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:maskColor="@android:color/transparent" />
 
     <ImageView
         android:id="@+id/iv_top_collect"
@@ -45,11 +46,13 @@
         android:layout_marginRight="42dp"
         android:scaleType="center"
         android:src="@mipmap/module_core_collect"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:maskColor="@android:color/transparent" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_gravity="bottom"
-        android:background="@color/dc_dddddd" />
+        android:background="@color/_dddddd_343434" />
+
 </com.aliya.view.fitsys.FitWindowsFrameLayout>

@@ -50,15 +50,12 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <!-- 高德定位 start -->
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="a336e7596d0d58af21433f06906075f5" />
         <service android:name="com.amap.api.location.APSService" />
         <!-- 高德定位 end -->
 
         <activity
-            android:name=".image.MediaSelectActivity"
+            android:name=".ui.activity.MediaSelectActivity"
+            android:configChanges="uiMode"
             android:process=":tools">
             <intent-filter>
                 <action android:name="android.intent.action.DAILY" />
@@ -75,14 +72,38 @@
         </activity>
 
         <activity
-            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
-            android:configChanges="keyboardHidden|orientation"
+            android:name=".ui.activity.BrowserActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+
+            </intent-filter>
+        </activity>
 
         <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation|uiMode"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <activity
+            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+            android:configChanges="keyboardHidden|orientation|uiMode"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+        <activity
             android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:configChanges="uiMode"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -91,9 +112,29 @@
             </intent-filter>
 
         </activity>
-
         <activity
-            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:name="com.zhejiangdaily.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|uiMode"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.zhejiangdaily.ddshare.DDShareActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|uiMode"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--<activity-->
+        <!--android:name="com.zhejiangdaily.WBShareActivity"-->
+        <!--android:configChanges="keyboardHidden|orientation"-->
+        <!--android:screenOrientation="portrait">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />-->
+
+        <!--<category android:name="android.intent.category.DEFAULT" />-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:configChanges="uiMode"
             android:launchMode="singleTask"
             android:noHistory="true">
             <intent-filter>
@@ -106,14 +147,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.umeng.qq.tencent.AssistActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <!--图集预览-->
         <activity
+            android:name=".utils.webjs.ImageBrowseActivity"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/data_host"
+                    android:path="/detail/ImageBrowseActivity"
+                    android:scheme="@string/data_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.dialog.AuthorityDialog"
+            android:configChanges="uiMode"
             android:screenOrientation="portrait"
-            android:name=".dialog.AuthorityDialog"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar.MinWidth">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

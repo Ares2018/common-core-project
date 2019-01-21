@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">@color/_d12324_520d0d</color>
+    <color name="colorPrimaryDark">@color/_d12324_520d0d</color>
+    <color name="statusBarColor">@color/_33000000</color>
+
+    <color name="_5c5c5c">#5c5c5c</color>
+    <color name="_ffffff">#ffffff</color>
+    <color name="_3b424c">#3b424c</color>
+    <color name="_7a7b7d">#7a7b7d</color>
+    <color name="_202124">#202124</color>
+    <color name="_33000000">#33000000</color>
+    <color name="_fdc247">#fdc247</color>
+    <color name="_e9e9e9">#e9e9e9</color>
+    <color name="_7f000000">#7f000000</color>
+    <color name="_878686">#878686</color>
+    <color name="_f44b50">#f44b50</color>
+    <color name="_8e3636">#8e3636</color>
+    <color name="_979797">#979797</color>
+
+    <color name="_d12324_520d0d">#520d0d</color>
+    <color name="_999999_7a7b7d">#7a7b7d</color>
+    <color name="_ffffff_7a7b7d">#7a7b7d</color>
+    <color name="_a5a5a5_7a7b7d">#7a7b7d</color>
+    <color name="_878686_5c5c5c">#5c5c5c</color>
+    <color name="_4682c5_315277">#315277</color>
+    <color name="_ffffff_aaaaaa">#aaaaaa</color>
+    <color name="_ffffff_202124">#202124</color>
+    <color name="_f8f8f8_202124">#202124</color>
+    <color name="_f5f5f5_191919">#191919</color>
+    <color name="_d8d8d8_5c5c5c">#5c5c5c</color>
+    <color name="_cecece_7a7b7d">#7a7b7d</color>
+    <color name="_999999_434343">#434343</color>
+    <color name="_ffffff_cccbcb">#cccbcb</color>
+    <color name="_eeecec_3f4042">#3f4042</color>
+    <color name="_cacaca_595a5c">#595a5c</color>
+    <color name="_000000_7a7b7d">#7a7b7d</color>
+    <color name="_808080_7a7b7d">#7a7b7d</color>
+    <color name="_484848_7a7b7d">#7a7b7d</color>
+    <color name="_dddddd_343434">#343434</color>
+    <color name="_f44b50_8e3636">#8e3636</color>
+    <color name="_00000000_7f000000">#7f000000</color>
+    <color name="_00000000_ffffff">#ffffff</color>
+    <color name="_00000000_7a7b7c">#7a7b7c</color>
+    <color name="_00000000_5c5c5c">#5c5c5c</color>
+</resources>
