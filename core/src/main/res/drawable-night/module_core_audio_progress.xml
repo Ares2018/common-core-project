@@ -3,14 +3,14 @@
     <item android:id="@android:id/background">
         <shape>
             <!-- 填充的颜色，颜色为自定义 -->
-            <solid android:color="@color/tc_7a7b7d" />
+            <solid android:color="@color/_7a7b7d" />
         </shape>
     </item>
 
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="@color/bc_7f000000" />
+                <solid android:color="@color/_7f000000" />
             </shape>
         </clip>
     </item>

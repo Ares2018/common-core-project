@@ -7,8 +7,6 @@
         />
 
     <solid
-        android:color="@color/tc_a5a5a5_night"
-        />
-
+        android:color="@color/_8e3636" />
 
 </shape>

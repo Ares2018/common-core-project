@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_title"
@@ -12,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:textColor="@color/tc_484848"
+        android:textColor="@color/_484848_7a7b7d"
         android:textSize="@dimen/ts_14sp"
         tools:text="标题" />
 
@@ -23,15 +22,17 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:textColor="@color/tc_484848"
+        android:textColor="@color/_484848_7a7b7d"
         android:textSize="18sp"
         tools:text="是否确认删除该评论" />
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
         android:layout_marginTop="60dp"
-        android:background="@color/tc_484848" />
+        android:background="@color/_484848_7a7b7d"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,14 +45,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/tc_484848"
+            android:textColor="@color/_484848_7a7b7d"
             android:textSize="15sp"
             tools:text="选择1" />
 
         <View
             android:layout_width="0.2dp"
             android:layout_height="match_parent"
-            android:background="@color/tc_484848" />
+            android:background="@color/_484848_7a7b7d"
+            />
 
         <TextView
             android:id="@+id/choose2"
@@ -59,8 +61,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/tc_484848"
+            android:textColor="@color/_484848_7a7b7d"
             android:textSize="15sp"
             tools:text="选择2" />
     </LinearLayout>
+
 </LinearLayout>

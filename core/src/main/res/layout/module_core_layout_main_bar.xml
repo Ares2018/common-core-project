@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -13,7 +12,8 @@
         android:layout_marginLeft="2dp"
         android:background="?attr/actionBarItemBackground"
         android:padding="10dp"
-        android:src="@mipmap/module_core_ic_main_bar_service" />
+        android:src="@mipmap/module_core_ic_main_bar_service"
+        app:maskColor="@color/_00000000_7a7b7c" />
 
     <View
         android:id="@+id/dot_service"
@@ -30,7 +30,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="39dp"
         android:text="服务"
-        android:textColor="@color/tc_ffffff"
+        android:textColor="@color/_ffffff_7a7b7d"
         android:textSize="14dp" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_marginLeft="80dp"
         android:gravity="center"
         android:text="日/夜"
-        android:textColor="@color/tc_ffffff" />
+        android:textColor="@color/_ffffff_7a7b7d" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="浙江新闻"
-        android:textColor="@color/tc_ffffff"
+        android:textColor="@color/_ffffff_7a7b7d"
         android:textSize="@dimen/ts_17sp" />
 
     <View
@@ -69,7 +69,8 @@
         android:layout_marginRight="2dp"
         android:background="?attr/actionBarItemBackground"
         android:padding="10dp"
-        android:src="@mipmap/module_core_ic_main_bar_mine" />
+        android:src="@mipmap/module_core_ic_main_bar_mine"
+        app:maskColor="@color/_00000000_7a7b7c" />
 
     <ImageView
         android:id="@+id/iv_search"
@@ -79,5 +80,7 @@
         android:layout_marginRight="42dp"
         android:background="?attr/actionBarItemBackground"
         android:padding="10dp"
-        android:src="@mipmap/module_core_ic_main_bar_search" />
+        android:src="@mipmap/module_core_ic_main_bar_search"
+        app:maskColor="@color/_00000000_7a7b7c" />
+
 </merge>

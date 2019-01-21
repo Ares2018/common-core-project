@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <com.aliya.view.fitsys.FitWindowsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_title_bar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#000000"
-    android:minHeight="@dimen/toolbar_normal_height">
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:id="@+id/layout_title_bar"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:background="#000000"
+                                             android:minHeight="@dimen/toolbar_normal_height"
+    >
+
 
     <TextView
         android:id="@+id/tv_top_bar_title"
         style="@style/ToolbarTitle"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:textColor="@color/tc_ffffff"
+        android:textColor="@color/_ffffff_7a7b7d"
         android:visibility="gone"
         tools:text="自定义ToolBar" />
 
@@ -25,7 +26,8 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="center"
-        android:src="@mipmap/module_core_back_topbar" />
+        android:src="@mipmap/module_core_back_topbar"
+        />
 
     <ImageView
         android:id="@+id/iv_share"
@@ -34,7 +36,8 @@
         android:layout_centerVertical="true"
         android:layout_gravity="right"
         android:scaleType="center"
-        android:src="@mipmap/module_core_share_atlas" />
+        android:src="@mipmap/module_core_share_atlas"
+        />
 
     <ImageView
         android:id="@+id/iv_top_download"
@@ -45,5 +48,8 @@
         android:layout_marginRight="40dp"
         android:scaleType="center"
         android:src="@mipmap/module_core_image_download"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:maskColor="@android:color/transparent"
+        />
+
 </com.aliya.view.fitsys.FitWindowsFrameLayout>

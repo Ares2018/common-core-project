@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <com.aliya.view.fitsys.FitWindowsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_title_bar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bc_ffffff"
+    android:background="@color/_ffffff_202124"
     android:fitsSystemWindows="true"
     android:minHeight="@dimen/toolbar_normal_height"
     app:fitType="top">
@@ -18,7 +17,8 @@
         android:layout_marginLeft="7dp"
         android:background="?attr/actionBarItemBackground"
         android:scaleType="center"
-        android:src="@mipmap/ic_top_bar_back_dark" />
+        android:src="@mipmap/ic_top_bar_back_dark"
+        app:maskColor="@android:color/transparent" />
 
     <com.aliya.view.fitsys.FitWindowsRelativeLayout
         android:id="@+id/frl_title"
@@ -33,7 +33,8 @@
             android:layout_width="19.4dp"
             android:layout_height="19.4dp"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/tv_top_bar_title" />
+            android:layout_toLeftOf="@+id/tv_top_bar_title"
+            app:maskColor="@android:color/transparent" />
 
         <TextView
             android:id="@+id/tv_top_bar_title"
@@ -44,9 +45,10 @@
             android:layout_marginRight="8dp"
             android:maxWidth="140dp"
             android:singleLine="true"
-            android:textColor="@color/tc_484848"
+            android:textColor="@color/_484848_7a7b7d"
             android:textSize="@dimen/ts_14sp"
             tools:text="联合国科教文组织提出" />
+
 
         <TextView
             android:id="@+id/tv_top_bar_subscribe_text"
@@ -58,10 +60,12 @@
             android:foreground="?android:attr/actionBarItemBackground"
             android:gravity="center"
             android:singleLine="true"
-            android:textColor="@color/bc_ffffff"
+            android:textColor="@color/_ffffff_aaaaaa"
             android:textSize="@dimen/ts_10sp"
             tools:text="+订阅" />
+
     </com.aliya.view.fitsys.FitWindowsRelativeLayout>
+
 
     <ImageView
         android:id="@+id/iv_top_share"
@@ -71,11 +75,13 @@
         android:layout_marginRight="12dp"
         android:scaleType="center"
         android:src="@mipmap/module_core_topbar_share"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:maskColor="@android:color/transparent" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_gravity="bottom"
-        android:background="@color/dc_dddddd" />
+        android:background="@color/_dddddd_343434" />
+
 </com.aliya.view.fitsys.FitWindowsFrameLayout>

@@ -24,14 +24,15 @@
         <!--修改系统滚动条样式-->
         <item name="android:scrollbarThumbVertical">@drawable/scroll_bar_vertical</item>
         <item name="android:scrollbarThumbHorizontal">@drawable/scroll_bar_horizontal</item>
+
     </style>
 
     <style name="CoreThemeNight" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="colorPrimary">@color/colorPrimary_night</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark_night</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
         <!--防止Buttom的文字变大写-->
         <item name="android:textAllCaps">false</item>
@@ -51,6 +52,7 @@
         <!--修改系统滚动条样式-->
         <item name="android:scrollbarThumbVertical">@drawable/scroll_bar_vertical</item>
         <item name="android:scrollbarThumbHorizontal">@drawable/scroll_bar_horizontal</item>
+
     </style>
 
     <style name="CoreTheme.Base"></style>
@@ -99,14 +101,14 @@
 
     <!--Toolbar 原生Back键 颜色控制-->
     <style name="ToolbarTheme1">
-        <item name="colorControlNormal">@color/color_3b424c</item>
-        <item name="android:textColor">@color/color_3b424c</item>
+        <item name="colorControlNormal">@color/_3b424c</item>
+        <item name="android:textColor">@color/_3b424c</item>
     </style>
 
     <!--Toolbar 原生Back键 颜色控制-->
     <style name="ToolbarTheme2">
-        <item name="colorControlNormal">@color/color_484848</item>
-        <item name="android:textColor">@color/color_484848</item>
+        <item name="colorControlNormal">@color/_484848_7a7b7d</item>
+        <item name="android:textColor">@color/_484848_7a7b7d</item>
 
     </style>
 
@@ -154,21 +156,10 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:button">@null</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:textColor">@color/tc_484848</item>
+        <item name="android:textColor">@color/_484848_7a7b7d</item>
         <item name="android:background">@null</item>
     </style>
 
-
-    <!--<style name="CoreDayTheme">-->
-        <!--<item name="module_core_ic_top_bar_collect">@drawable/module_core_ic_top_bar_collect</item>-->
-    <!--</style>-->
-
-    <!--<style name="CoreNightTheme">-->
-        <!--<item name="module_core_ic_top_bar_collect">@drawable/module_core_ic_top_bar_collect_night-->
-        <!--</item>-->
-    <!--</style>-->
-
-    <style name="AuthorityDialog" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
-    </style>
+    <style name="AuthorityDialog" parent="@android:style/Theme.Holo.Dialog.NoActionBar" />
 
 </resources>

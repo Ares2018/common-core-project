@@ -1,12 +1,11 @@
 package com.zjrb.core.recycleView;
 
-import android.support.annotation.AttrRes;
-import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aliya.uimode.mode.Attr;
 import com.aliya.uimode.utils.UiModeUtils;
 import com.zjrb.core.R;
 import com.zjrb.core.R2;
@@ -44,11 +43,9 @@ public class EmptyPageHolder extends PageItem {
     private void bindView(ArgsBuilder args) {
         if (args == null) return;
         if (args.resId != 0) {
-            mIvIcon.setImageResource(args.resId);
+            UiModeUtils.applySave(mIvIcon, Attr.NAME_SRC, args.resId);
         }
-        if (args.attrId != 0) {
-            UiModeUtils.applyImageSrc(mIvIcon, args.attrId);
-        }
+
         if (!TextUtils.isEmpty(args.content)) {
             mTvContent.setText(args.content);
         }
@@ -63,7 +60,6 @@ public class EmptyPageHolder extends PageItem {
     public final static class ArgsBuilder {
 
         private int resId; // 图标资源
-        private int attrId; // 属性资源
 
         private String content; // 提示内
 
@@ -74,13 +70,14 @@ public class EmptyPageHolder extends PageItem {
             return new ArgsBuilder();
         }
 
-        public ArgsBuilder resId(@DrawableRes int resId) {
+        /**
+         * 设置图片资源 id
+         *
+         * @param resId such as R.drawable.xx or R.mipmap.xx;
+         * @return this
+         */
+        public ArgsBuilder resId(int resId) {
             this.resId = resId;
-            return this;
-        }
-
-        public ArgsBuilder attrId(@AttrRes int attrId) {
-            this.attrId = attrId;
             return this;
         }
 

@@ -17,9 +17,9 @@ import android.view.View;
 
 import com.aliya.uimode.UiModeManager;
 import com.zjrb.core.R;
-import com.zjrb.core.utils.AppManager;
 import com.zjrb.core.permission.IPermissionOperate;
 import com.zjrb.core.permission.PermissionManager;
+import com.zjrb.core.utils.AppManager;
 import com.zjrb.core.utils.AppUtils;
 import com.zjrb.core.utils.DensityHelper;
 
@@ -37,6 +37,9 @@ public abstract class BaseActivity extends LifecycleActivity implements IPermiss
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (!onSetupTheme()) {
+//            ThemeMode.fitActivityTheme(this);
+        }
         // 设置夜间模式 inflater factor
         UiModeManager.setInflaterFactor(getLayoutInflater());
         super.onCreate(savedInstanceState);
@@ -85,6 +88,7 @@ public abstract class BaseActivity extends LifecycleActivity implements IPermiss
     @Override
     protected void onDestroy() {
         AppManager.get().removeActivity(this);
+//        mAnalytics.sendWithDuration();
         super.onDestroy();
     }
 

@@ -3,14 +3,14 @@
     <!-- 背景 -->
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="@color/color_ffffff" />
+            <solid android:color="@color/_ffffff" />
         </shape>
     </item>
     <!-- 进度条 -->
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="@color/color_fdc247" />
+                <solid android:color="@color/_fdc247" />
             </shape>
         </clip>
     </item>

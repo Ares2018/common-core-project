@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,15 +17,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.382"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        app:maskColor="@android:color/transparent" />
 
     <TextView
         android:id="@+id/tv_error_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="加载失败"
-        android:textColor="@color/tc_484848"
+        android:text="@string/module_core_load_error_tip"
+        android:textColor="@color/_484848_7a7b7d"
         android:textSize="@dimen/ts_14sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_error_msg"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +39,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="点击屏幕重试"
-        android:textColor="@color/tc_484848"
+        android:textColor="@color/_484848_7a7b7d"
         android:textSize="@dimen/ts_11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_error_title" />
+
 </android.support.constraint.ConstraintLayout>
