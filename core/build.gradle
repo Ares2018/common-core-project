@@ -27,6 +27,7 @@ dependencies {
     api 'com.aliya:fitwindow:1.0.0'
     api 'com.google.code.gson:gson:2.6.2'
     api 'cn.core.android:core-glide:1.0.0'
+    api 'com.core:network:0.0.4'
     api 'com.jakewharton:butterknife:9.0.0-rc1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 }
