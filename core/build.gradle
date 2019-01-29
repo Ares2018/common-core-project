@@ -29,5 +29,8 @@ dependencies {
     implementation 'cn.core.android:core-glide:1.0.0'
     implementation 'com.core:network:0.0.4'
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    implementation ('cn.daily.android:share:0.0.0.5-SNAPSHOT') {
+        exclude group: 'com.android.support'
+    }
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 }
