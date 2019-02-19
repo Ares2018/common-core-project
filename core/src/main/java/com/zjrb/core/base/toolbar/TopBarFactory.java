@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  * @author a_liYa
  * @date 16/8/14 11:01.
  */
-public final class TopBarFactory {
+public class TopBarFactory {
 
     /**
      * @param view
@@ -28,7 +28,5 @@ public final class TopBarFactory {
     public static TopBarWhiteStyle createWhiteStyle(ViewGroup view, Activity act) {
         return new TopBarWhiteStyle(act);
     }
-
-
 
 }
