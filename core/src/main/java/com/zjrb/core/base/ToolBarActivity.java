@@ -31,9 +31,8 @@ public abstract class ToolBarActivity extends SwipeBackActivity {
     /**
      * 自己的根布局
      */
-    View contentView;
-
-    View topBarLayout;
+    protected View contentView;
+    protected View topBarLayout;
 
 
     @Override
