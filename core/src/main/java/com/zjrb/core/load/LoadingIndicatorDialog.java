@@ -127,8 +127,8 @@ public class LoadingIndicatorDialog extends Dialog {
         View contentView = View.inflate(getContext(),
                 R.layout.module_core_loading_alert_dialog, null);
 
-        mIvIcon = (ImageView) contentView.findViewById(R.id.iv_icon);
-        mTvToast = (TextView) contentView.findViewById(R.id.tv_toast);
+        mIvIcon = contentView.findViewById(R.id.iv_icon);
+        mTvToast = contentView.findViewById(R.id.tv_toast);
         mIvIcon.setImageResource(R.mipmap.module_core_icon_loading_progress);
         setContentView(contentView);
 
