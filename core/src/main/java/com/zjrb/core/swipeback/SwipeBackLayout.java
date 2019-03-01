@@ -288,6 +288,8 @@ public class SwipeBackLayout extends FrameLayout {
          * Invoke when scroll percent over the threshold for the first time
          */
         void onScrollOverThreshold();
+
+        void onScrollFinish();
     }
 
     /**
@@ -539,6 +541,15 @@ public class SwipeBackLayout extends FrameLayout {
                 mScrollPercent = Math.abs((float) top
                         / (mContentView.getHeight() + mShadowBottom.getIntrinsicHeight()));
             }
+
+            if (mListeners != null && !mListeners.isEmpty() && mDragHelper.getViewDragState() == STATE_DRAGGING && mScrollPercent <= mScrollThreshold && mIsScrollOverValid) {
+                for (SwipeListener listener : mListeners) {
+                    if (mScrollPercent <= mScrollThreshold) {
+                        listener.onScrollStateChange(mDragHelper.getViewDragState(), mScrollPercent);
+                    }
+                }
+            }
+
             mContentLeft = left;
             mContentTop = top;
             invalidate();
@@ -558,6 +569,11 @@ public class SwipeBackLayout extends FrameLayout {
                 if (!mActivity.isFinishing()) {
                     mActivity.finish();
                     mActivity.overridePendingTransition(0, 0);
+                    if (mListeners != null && !mListeners.isEmpty()) {
+                        for (SwipeListener listener : mListeners) {
+                            listener.onScrollFinish();
+                        }
+                    }
                 }
             }
         }
