@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -67,6 +68,11 @@ public class MediaSelectActivity extends BaseActivity implements View.OnClickLis
      */
     public static final String KEY_DATA = "key_data";
 
+    /**
+     * JS回调判定
+     */
+    private String JSCallBack;
+
     public static final String SHOW_SELECTED_NUM = "show_selected_num";
     public static final int REQUEST_CODE_TAKE_PICTURE = 0x1;
 
@@ -77,6 +83,10 @@ public class MediaSelectActivity extends BaseActivity implements View.OnClickLis
         initView();
         initState(savedInstanceState);
         initPermission();
+        //JS调用判定
+        if (getIntent() != null && getIntent().hasExtra("callback")) {
+            JSCallBack = getIntent().getStringExtra("callback");
+        }
     }
 
 
@@ -147,6 +157,10 @@ public class MediaSelectActivity extends BaseActivity implements View.OnClickLis
         if (list != null && list.size() > 0) {
             Intent data = new Intent();
             data.putParcelableArrayListExtra(KEY_DATA, list);
+            //回传判定
+            if (!TextUtils.isEmpty(JSCallBack)) {
+                data.putExtra("callback", JSCallBack);
+            }
             setResult(RESULT_OK, data);
         }
         onBackPressed();
