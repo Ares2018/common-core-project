@@ -9,14 +9,16 @@ import android.view.View;
 import com.zjrb.core.R;
 import com.zjrb.core.swipeback.SwipeBackLayout;
 import com.zjrb.core.swipeback.Utils;
+import com.zjrb.core.utils.AppManager;
 
 
 /**
  * @author Yrom
  */
-public class SwipeBackActivityHelper {
+public class SwipeBackActivityHelper implements SwipeBackLayout.SwipeListener {
+    private static final String TAG = "Swipe";
+    private static final float ACTIVITY_SCALE = 0.7f;
     private Activity mActivity;
-
     private SwipeBackLayout mSwipeBackLayout;
 
     public SwipeBackActivityHelper(Activity activity) {
@@ -27,23 +29,9 @@ public class SwipeBackActivityHelper {
     public void onActivityCreate() {
         mActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mActivity.getWindow().getDecorView().setBackgroundDrawable(null);
-        mSwipeBackLayout = (SwipeBackLayout) LayoutInflater.from(mActivity).inflate(
-                R.layout.module_core_swipeback_layout, null);
-        mSwipeBackLayout.addSwipeListener(new SwipeBackLayout.SwipeListener() {
-            @Override
-            public void onScrollStateChange(int state, float scrollPercent) {
-            }
-
-            @Override
-            public void onEdgeTouch(int edgeFlag) {
-                Utils.convertActivityToTranslucent(mActivity);
-            }
-
-            @Override
-            public void onScrollOverThreshold() {
-
-            }
-        });
+        mSwipeBackLayout = (SwipeBackLayout) LayoutInflater.from(mActivity).inflate(R.layout.module_core_swipeback_layout, null);
+        mSwipeBackLayout.setScrollThresHold(1f - ACTIVITY_SCALE);
+        mSwipeBackLayout.addSwipeListener(this);
     }
 
     public void onPostCreate() {
@@ -59,5 +47,32 @@ public class SwipeBackActivityHelper {
 
     public SwipeBackLayout getSwipeBackLayout() {
         return mSwipeBackLayout;
+    }
+
+    @Override
+    public void onScrollStateChange(int state, float scrollPercent) {
+        Activity activity = AppManager.get().preActivity(mActivity);
+        if (activity != null) {
+            View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+            view.setScaleX(scrollPercent + ACTIVITY_SCALE);
+            view.setScaleY(scrollPercent + ACTIVITY_SCALE);
+        }
+    }
+
+    @Override
+    public void onEdgeTouch(int edgeFlag) {
+        Utils.convertActivityToTranslucent(mActivity);
+        Activity activity = AppManager.get().preActivity(mActivity);
+        if (activity != null) {
+            activity.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+            View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+            view.setScaleX(ACTIVITY_SCALE);
+            view.setScaleY(ACTIVITY_SCALE);
+        }
+    }
+
+    @Override
+    public void onScrollOverThreshold() {
+
     }
 }
