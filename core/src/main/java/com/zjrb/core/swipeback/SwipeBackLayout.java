@@ -539,15 +539,30 @@ public class SwipeBackLayout extends FrameLayout {
                 mScrollPercent = Math.abs((float) top
                         / (mContentView.getHeight() + mShadowBottom.getIntrinsicHeight()));
             }
+
+            if (mListeners != null
+                    && !mListeners.isEmpty()
+                    && mDragHelper.getViewDragState() == STATE_DRAGGING
+                    && mScrollPercent <= mScrollThreshold
+                    && mIsScrollOverValid) {
+                for (SwipeListener listener : mListeners) {
+                    if (mScrollPercent <= mScrollThreshold) {
+                        listener.onScrollStateChange(mDragHelper.getViewDragState(), mScrollPercent);
+                    }
+                }
+            }
+
             mContentLeft = left;
             mContentTop = top;
             invalidate();
             if (mScrollPercent < mScrollThreshold && !mIsScrollOverValid) {
                 mIsScrollOverValid = true;
             }
-            if (mListeners != null && !mListeners.isEmpty()
+            if (mListeners != null
+                    && !mListeners.isEmpty()
                     && mDragHelper.getViewDragState() == STATE_DRAGGING
-                    && mScrollPercent >= mScrollThreshold && mIsScrollOverValid) {
+                    && mScrollPercent >= mScrollThreshold
+                    && mIsScrollOverValid) {
                 mIsScrollOverValid = false;
                 for (SwipeListener listener : mListeners) {
                     listener.onScrollOverThreshold();
