@@ -1,14 +1,14 @@
 
 package com.zjrb.core.swipeback.app;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.zjrb.core.swipeback.SwipeBackLayout;
 import com.zjrb.core.swipeback.Utils;
+import com.zjrb.core.utils.AppManager;
 
 
 /**
@@ -74,6 +74,17 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
     public void scrollToFinishActivity() {
         Utils.convertActivityToTranslucent(this);
         getSwipeBackLayout().scrollToFinishActivity();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        Activity activity = AppManager.get().preActivity(this);
+        if (activity != null) {
+            View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+            view.setScaleX(1f);
+            view.setScaleY(1f);
+        }
     }
 
     /**

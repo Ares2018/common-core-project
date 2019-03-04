@@ -288,8 +288,6 @@ public class SwipeBackLayout extends FrameLayout {
          * Invoke when scroll percent over the threshold for the first time
          */
         void onScrollOverThreshold();
-
-        void onScrollFinish();
     }
 
     /**
@@ -542,7 +540,11 @@ public class SwipeBackLayout extends FrameLayout {
                         / (mContentView.getHeight() + mShadowBottom.getIntrinsicHeight()));
             }
 
-            if (mListeners != null && !mListeners.isEmpty() && mDragHelper.getViewDragState() == STATE_DRAGGING && mScrollPercent <= mScrollThreshold && mIsScrollOverValid) {
+            if (mListeners != null
+                    && !mListeners.isEmpty()
+                    && mDragHelper.getViewDragState() == STATE_DRAGGING
+                    && mScrollPercent <= mScrollThreshold
+                    && mIsScrollOverValid) {
                 for (SwipeListener listener : mListeners) {
                     if (mScrollPercent <= mScrollThreshold) {
                         listener.onScrollStateChange(mDragHelper.getViewDragState(), mScrollPercent);
@@ -556,9 +558,11 @@ public class SwipeBackLayout extends FrameLayout {
             if (mScrollPercent < mScrollThreshold && !mIsScrollOverValid) {
                 mIsScrollOverValid = true;
             }
-            if (mListeners != null && !mListeners.isEmpty()
+            if (mListeners != null
+                    && !mListeners.isEmpty()
                     && mDragHelper.getViewDragState() == STATE_DRAGGING
-                    && mScrollPercent >= mScrollThreshold && mIsScrollOverValid) {
+                    && mScrollPercent >= mScrollThreshold
+                    && mIsScrollOverValid) {
                 mIsScrollOverValid = false;
                 for (SwipeListener listener : mListeners) {
                     listener.onScrollOverThreshold();
@@ -569,11 +573,6 @@ public class SwipeBackLayout extends FrameLayout {
                 if (!mActivity.isFinishing()) {
                     mActivity.finish();
                     mActivity.overridePendingTransition(0, 0);
-                    if (mListeners != null && !mListeners.isEmpty()) {
-                        for (SwipeListener listener : mListeners) {
-                            listener.onScrollFinish();
-                        }
-                    }
                 }
             }
         }
