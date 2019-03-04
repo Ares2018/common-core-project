@@ -42,6 +42,7 @@ import java.util.List;
  * @author a_liYa
  * @date 16/10/21 下午9:11.
  */
+//TODO WLJ 转移到biz中去
 public class MediaSelectActivity extends BaseActivity implements View.OnClickListener,
         OnItemClickListener, LocalMediaAdapter.Callback, DialogFragmentImpl.CreateDialog {
 

@@ -44,11 +44,8 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <service android:name="com.amap.api.location.APSService" />
-        <!-- 高德定位 end -->
-
         <activity
-            android:name=".ui.activity.MediaSelectActivity"
+            android:name=".image.MediaSelectActivity"
             android:configChanges="uiMode"
             android:process=":tools">
             <intent-filter>
@@ -65,42 +62,9 @@
             </intent-filter>
         </activity>
 
+
         <activity
-            android:name=".ui.activity.BrowserActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize|uiMode"
-            android:exported="false"
-            android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-
-            </intent-filter>
-        </activity>
-
-        <!--图集预览-->
-        <activity
-            android:name=".utils.webjs.ImageBrowseActivity"
-            android:configChanges="uiMode"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="@string/data_host"
-                    android:path="/detail/ImageBrowseActivity"
-                    android:scheme="@string/data_scheme" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.widget.dialog.AuthorityDialog"
+            android:name=".dialog.AuthorityDialog"
             android:configChanges="uiMode"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar.MinWidth">
