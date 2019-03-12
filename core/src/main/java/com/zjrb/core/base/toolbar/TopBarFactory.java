@@ -21,12 +21,4 @@ public class TopBarFactory {
     public static DefaultTopBarHolder createDefault(ViewGroup view, Activity act, String title) {
         return new DefaultTopBarHolder(view, act, title);
     }
-
-    /**
-     * 白色样式 ： 左返回 + 中标题 + 右收藏(可隐藏) + 右分享(可隐藏)
-     */
-    public static TopBarWhiteStyle createWhiteStyle(ViewGroup view, Activity act) {
-        return new TopBarWhiteStyle(act);
-    }
-
 }
