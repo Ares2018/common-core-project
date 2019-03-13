@@ -44,5 +44,7 @@
     <color name="_00000000_ffffff">#00000000</color>
     <color name="_00000000_7a7b7c">#00000000</color>
     <color name="_00000000_5c5c5c">#00000000</color>
+    <color name="default_top_bar_title_color">#ffffff</color>
+    <color name="default_top_bar_divider_color">@color/colorPrimary</color>
 
 </resources>
