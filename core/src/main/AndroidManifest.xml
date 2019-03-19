@@ -45,25 +45,6 @@
         </provider>
 
         <activity
-            android:name=".image.MediaSelectActivity"
-            android:configChanges="uiMode"
-            android:process=":tools">
-            <intent-filter>
-                <action android:name="android.intent.action.DAILY" />
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="@string/data_host"
-                    android:path="/core/MediaSelectActivity"
-                    android:scheme="@string/data_scheme" />
-            </intent-filter>
-        </activity>
-
-
-        <activity
             android:name=".dialog.AuthorityDialog"
             android:configChanges="uiMode"
             android:screenOrientation="portrait"
