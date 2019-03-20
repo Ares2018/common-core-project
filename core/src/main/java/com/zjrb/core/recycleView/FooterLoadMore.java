@@ -39,6 +39,14 @@ public class FooterLoadMore<M> extends PageItem implements LoadMore, View.OnClic
     }
 
     /**
+     * 获取加载更多listener
+     * @return
+     */
+    public LoadMoreListener getLoadMoreListener(){
+        return loadMoreListener;
+    }
+
+    /**
      * 获取加载更多控件
      * @return
      */
