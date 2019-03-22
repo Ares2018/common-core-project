@@ -3,6 +3,7 @@ package com.zjrb.core.swipeback.app;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -54,8 +55,13 @@ public class SwipeBackActivityHelper implements SwipeBackLayout.SwipeListener {
         Activity activity = AppManager.get().preActivity(mActivity);
         if (activity != null) {
             View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
-            view.setScaleX(scrollPercent + ACTIVITY_SCALE);
-            view.setScaleY(scrollPercent + ACTIVITY_SCALE);
+
+            float percent = scrollPercent + ACTIVITY_SCALE;
+            if (percent >= 1) {
+                percent = 1;
+            }
+            view.setScaleX(percent);
+            view.setScaleY(percent);
         }
     }
 
