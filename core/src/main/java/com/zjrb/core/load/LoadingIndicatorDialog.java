@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zjrb.core.R;
+import com.zjrb.core.load.indicator.LoadingIndicatorView;
 import com.zjrb.core.utils.T;
 
 /**
@@ -27,6 +28,7 @@ public class LoadingIndicatorDialog extends Dialog {
 
     private TextView mTvToast;
     private ImageView mIvIcon;
+    private LoadingIndicatorView mProgressbar;
 
     // 提醒文本
     private String alertText;
@@ -74,9 +76,7 @@ public class LoadingIndicatorDialog extends Dialog {
      * @see #finish(String, int)
      */
     public void finish(boolean isSuccess, String text) {
-        finish(text, isSuccess
-                ? R.mipmap.module_core_icon_loading_success
-                : R.mipmap.module_core_icon_loading_failure);
+        finish(text,R.mipmap.module_core_icon_loading_success);
     }
 
     /**
@@ -98,7 +98,8 @@ public class LoadingIndicatorDialog extends Dialog {
      */
     public void finish(String text, @DrawableRes int resId) {
         mTvToast.setText(text);
-        mIvIcon.setImageResource(resId);
+        mIvIcon.setVisibility(View.VISIBLE);
+        mProgressbar.setVisibility(View.GONE);
         mTvToast.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -129,7 +130,7 @@ public class LoadingIndicatorDialog extends Dialog {
 
         mIvIcon = contentView.findViewById(R.id.iv_icon);
         mTvToast = contentView.findViewById(R.id.tv_toast);
-        mIvIcon.setImageResource(R.mipmap.module_core_icon_loading_progress);
+        mProgressbar=contentView.findViewById(R.id.progressbar);
         setContentView(contentView);
 
         setCanceledOnTouchOutside(false);
