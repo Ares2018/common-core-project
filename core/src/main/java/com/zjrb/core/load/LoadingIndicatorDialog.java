@@ -76,7 +76,7 @@ public class LoadingIndicatorDialog extends Dialog {
      * @see #finish(String, int)
      */
     public void finish(boolean isSuccess, String text) {
-        finish(text,R.mipmap.module_core_icon_loading_success);
+        finish(text, isSuccess ? R.mipmap.module_core_icon_loading_success : R.mipmap.module_core_icon_loading_failure);
     }
 
     /**
@@ -98,6 +98,7 @@ public class LoadingIndicatorDialog extends Dialog {
      */
     public void finish(String text, @DrawableRes int resId) {
         mTvToast.setText(text);
+        mIvIcon.setImageResource(resId);
         mIvIcon.setVisibility(View.VISIBLE);
         mProgressbar.setVisibility(View.GONE);
         mTvToast.postDelayed(new Runnable() {
@@ -130,7 +131,7 @@ public class LoadingIndicatorDialog extends Dialog {
 
         mIvIcon = contentView.findViewById(R.id.iv_icon);
         mTvToast = contentView.findViewById(R.id.tv_toast);
-        mProgressbar=contentView.findViewById(R.id.progressbar);
+        mProgressbar = contentView.findViewById(R.id.progressbar);
         setContentView(contentView);
 
         setCanceledOnTouchOutside(false);
