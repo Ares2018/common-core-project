@@ -200,6 +200,11 @@ public class DecorAdapter extends RecyclerView.Adapter implements CompatAdapter 
         return false;
     }
 
+    @Override
+    public boolean isVoiceOfMassType(int position) {
+        return false;
+    }
+
     // 需要悬浮效果时需要子类重写 Override
     @Override
     public OverlayViewHolder onCreateOverlayViewHolder(ViewGroup parent, int viewType) {
