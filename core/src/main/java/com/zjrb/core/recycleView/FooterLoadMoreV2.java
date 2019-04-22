@@ -78,15 +78,7 @@ public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnCl
         return fyContainer;
     }
 
-    // 防止加载少量数据，加载更多布局没出屏幕，不会回调 onViewAttachedToWindow
-    private Runnable mKeepRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (!isLoading && state != TYPE_ERROR && state != TYPE_NO_MORE) {
-                loadMore();
-            }
-        }
-    };
+
 
     @Override
     public void onClick(View view) {
@@ -127,8 +119,6 @@ public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnCl
 
     @Override
     public void onSuccess(M data) {
-        itemView.removeCallbacks(mKeepRunnable);
-        itemView.postDelayed(mKeepRunnable, 500);
         isLoading = false;
         if (loadMoreListener != null) {
             loadMoreListener.onLoadMoreSuccess(data, this);
