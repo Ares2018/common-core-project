@@ -53,7 +53,7 @@ public class GuideView extends FrameLayout {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
             Rect rect = getRect(anchorView, paddingLeft, paddingTop, paddingRight, paddingBottom);
-            guideView.layout(rect.centerX() - guideView.getWidth() / 2, rect.bottom - guideView.getHeight(), rect.centerX() + guideView.getWidth() / 2, rect.bottom);
+            guideView.layout(rect.right-guideView.getWidth(), rect.bottom - guideView.getHeight(), rect.right, rect.bottom);
             ((View) guideView.getParent()).invalidate();
         }
     }
