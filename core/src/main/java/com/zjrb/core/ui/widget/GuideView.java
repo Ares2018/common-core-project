@@ -269,6 +269,6 @@ public class GuideView extends FrameLayout {
     }
 
     private static void hideGuide(String tag) {
-        SPHelper.get().put(tag, false);
+        SPHelper.get().put(tag, false).commit();
     }
 }
