@@ -1,10 +1,12 @@
 package com.zjrb.coreproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
 import com.zjrb.core.base.BaseActivity;
+import com.zjrb.core.dialog.AuthorityDialog;
 import com.zjrb.core.load.LoadingIndicatorDialog;
 
 public class MainActivity extends BaseActivity {
@@ -18,14 +20,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingIndicatorDialog.show();
-                loadingIndicatorDialog.setToastText("加载中...");
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingIndicatorDialog.finish(true);
-                    }
-                },1000);
+              startActivity(new Intent(MainActivity.this, AuthorityDialog.class));
             }
         });
 

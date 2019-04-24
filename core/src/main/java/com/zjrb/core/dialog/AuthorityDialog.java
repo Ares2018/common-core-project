@@ -71,9 +71,4 @@ public class AuthorityDialog extends BaseActivity implements View.OnClickListene
         }
         finish();
     }
-
-    @Override
-    public boolean isShowTopBar() {
-        return false;
-    }
 }
