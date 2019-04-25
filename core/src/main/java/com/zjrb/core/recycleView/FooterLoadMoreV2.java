@@ -4,11 +4,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.core.network.api.ApiGenericCarrier;
 import com.zjrb.core.R;
 import com.zjrb.core.load.LoadMoreListener;
 import com.zjrb.core.load.LoadingCallBack;
+import com.zjrb.core.utils.UIUtils;
 
-public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnClickListener,LoadingCallBack<M> {
+public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnClickListener, LoadingCallBack<M>, ApiGenericCarrier {
 
     private int state = 0;
     private boolean isLoading = false;
@@ -79,7 +81,6 @@ public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnCl
     }
 
 
-
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.layout_more_error) {
@@ -123,5 +124,22 @@ public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnCl
         if (loadMoreListener != null) {
             loadMoreListener.onLoadMoreSuccess(data, this);
         }
+    }
+
+    @Override
+    public Class getGenericRealize() {
+        if (loadMoreListener == null) {
+            if (UIUtils.isDebuggable()) {
+                throw new IllegalArgumentException("FooterLoadMoreV2 需要传入回调接口 LoadMoreListener");
+            }else{
+                return null;
+            }
+        }
+        return loadMoreListener.getClass();
+    }
+
+    @Override
+    public Class getGenericDefine() {
+        return LoadMoreListener.class;
     }
 }
