@@ -20,8 +20,6 @@ public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnCl
     private View mErrorMoreView;
     private View mNoMoreView;
     private View fyContainer;
-    //用来标记是否正在向上滑动
-    private boolean isSlidingUpward = false;
 
     public FooterLoadMoreV2(RecyclerView parent, LoadMoreListener<M> loadMoreListener) {
         super(parent, R.layout.module_core_item_footer_load_more);
@@ -45,7 +43,7 @@ public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnCl
                     int itemCount = manager.getItemCount();
 
                     // 判断是否滑动到了最后一个item，并且是向上滑动
-                    if (lastItemPosition == (itemCount - 1) && isSlidingUpward) {
+                    if (lastItemPosition == (itemCount - 1)) {
                         if (!isLoading && state != TYPE_ERROR && state != TYPE_NO_MORE) {
                             loadMore();
                         }
@@ -56,8 +54,6 @@ public class FooterLoadMoreV2<M> extends PageItem implements LoadMore, View.OnCl
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                // 大于0表示正在向上滑动，小于等于0表示停止或向下滑动
-                isSlidingUpward = dy > 0;
             }
         });
     }
