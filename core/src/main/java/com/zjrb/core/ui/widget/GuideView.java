@@ -2,6 +2,8 @@ package com.zjrb.core.ui.widget;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -18,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.zjrb.core.BuildConfig;
+import com.zjrb.core.R;
 import com.zjrb.core.db.SPHelper;
 
 /**
@@ -53,7 +56,7 @@ public class GuideView extends FrameLayout {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
             Rect rect = getRect(anchorView, paddingLeft, paddingTop, paddingRight, paddingBottom);
-            guideView.layout(rect.right-guideView.getWidth(), rect.bottom - guideView.getHeight(), rect.right, rect.bottom);
+            guideView.layout(0, rect.bottom - guideView.getHeight(), guideView.getWidth(), rect.bottom);
             ((View) guideView.getParent()).invalidate();
         }
     }
@@ -62,7 +65,7 @@ public class GuideView extends FrameLayout {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
             Rect rect = getRect(anchorView, paddingLeft, paddingTop, paddingRight, paddingBottom);
-            guideView.layout(rect.centerX() - guideView.getWidth() / 2, rect.top, rect.centerX() + guideView.getWidth() / 2, rect.top + guideView.getHeight());
+            guideView.layout(0, rect.top, guideView.getWidth(), rect.top + guideView.getHeight());
             ((View) guideView.getParent()).invalidate();
         }
     }
@@ -97,7 +100,7 @@ public class GuideView extends FrameLayout {
         anchorView.getGlobalVisibleRect(rect);
         rect.top = rect.top - paddingTop;
         rect.left = rect.left - paddingLeft;
-        rect.right = rect.right + paddingRight;
+        rect.right = rect.right - paddingRight;
         rect.bottom = rect.bottom - paddingBottom;
         return rect;
     }
@@ -120,6 +123,7 @@ public class GuideView extends FrameLayout {
         private int mPaddingTop;
         private int mPaddingRight;
         private int mPaddingBottom;
+        private ImageView.ScaleType mScale;
 
         public Builder(Activity activity) {
             mActivity = activity;
@@ -137,6 +141,11 @@ public class GuideView extends FrameLayout {
 
         public Builder setTag(String tag) {
             mTag = tag;
+            return this;
+        }
+
+        public Builder setScale(ImageView.ScaleType scale) {
+            mScale = scale;
             return this;
         }
 
@@ -206,8 +215,17 @@ public class GuideView extends FrameLayout {
 
                 mGuideView = new GuideView(mActivity, mNext);
                 mImageView = new ImageView(mActivity);
+
                 mImageView.setImageDrawable(bitmap);
                 FrameLayout.MarginLayoutParams params = new MarginLayoutParams(bitmap.getIntrinsicWidth(), bitmap.getIntrinsicHeight());
+                if (mScale == ImageView.ScaleType.FIT_XY) {
+                    int bWidth = bitmap.getIntrinsicWidth();
+                    int bHeight = bitmap.getIntrinsicHeight();
+                    int width =mActivity.getResources().getDisplayMetrics().widthPixels;
+                    int height = width * bHeight / bWidth;
+                    params = new MarginLayoutParams(width, height);
+                    mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                }
                 mGuideView.addView(mImageView, -1, params);
 
                 mGuideView.setBackgroundColor(Color.parseColor("#b2000000"));
@@ -265,7 +283,8 @@ public class GuideView extends FrameLayout {
     }
 
     private static boolean isShowGuide(String tag) {
-        return SPHelper.get().get(tag, true);
+//        return SPHelper.get().get(tag, true);
+        return true;
     }
 
     private static void hideGuide(String tag) {
