@@ -274,8 +274,7 @@ public class GuideView extends FrameLayout {
     }
 
     private static boolean isShowGuide(String tag) {
-//        return SPHelper.get().get(tag, true);
-        return true;
+        return SPHelper.get().get(tag, true);
     }
 
     private static void hideGuide(String tag) {
