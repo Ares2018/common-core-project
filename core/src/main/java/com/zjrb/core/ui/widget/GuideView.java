@@ -2,8 +2,6 @@ package com.zjrb.core.ui.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -20,8 +18,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.zjrb.core.BuildConfig;
-import com.zjrb.core.R;
 import com.zjrb.core.db.SPHelper;
+import com.zjrb.core.utils.UIUtils;
 
 /**
  * Created by lixinke on 2017/10/24.
@@ -55,8 +53,9 @@ public class GuideView extends FrameLayout {
     static class BottomGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
-            Rect rect = getRect(anchorView, paddingLeft, paddingTop, paddingRight, paddingBottom);
-            guideView.layout(0, rect.bottom - guideView.getHeight(), guideView.getWidth(), rect.bottom);
+            Rect rect = getRect(anchorView);
+            int bottom=rect.bottom-paddingBottom;
+            guideView.layout(0, bottom - guideView.getHeight(), guideView.getWidth(), bottom);
             ((View) guideView.getParent()).invalidate();
         }
     }
@@ -64,8 +63,9 @@ public class GuideView extends FrameLayout {
     static class TopGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
-            Rect rect = getRect(anchorView, paddingLeft, paddingTop, paddingRight, paddingBottom);
-            guideView.layout(0, rect.top, guideView.getWidth(), rect.top + guideView.getHeight());
+            Rect rect = getRect(anchorView);
+            int top = rect.top - paddingTop;
+            guideView.layout(0, top, guideView.getWidth(), top + guideView.getHeight());
             ((View) guideView.getParent()).invalidate();
         }
     }
@@ -74,7 +74,7 @@ public class GuideView extends FrameLayout {
     static class RightGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
-            Rect rect = getRect(anchorView, paddingLeft, paddingTop, paddingRight, paddingBottom);
+            Rect rect = getRect(anchorView);
             guideView.layout(rect.right - guideView.getWidth(), rect.top, rect.right, rect.top + guideView.getHeight());
             ((View) guideView.getParent()).invalidate();
         }
@@ -83,14 +83,14 @@ public class GuideView extends FrameLayout {
     static class LeftGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
-            Rect rect = getRect(anchorView, paddingLeft, paddingTop, paddingRight, paddingBottom);
+            Rect rect = getRect(anchorView);
             guideView.layout(rect.left, rect.top, rect.left + guideView.getWidth(), rect.top + guideView.getHeight());
             ((View) guideView.getParent()).invalidate();
         }
     }
 
     @NonNull
-    private static Rect getRect(View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
+    private static Rect getRect(View anchorView) {
 
         if (anchorView == null) {
             return new Rect();
@@ -98,10 +98,6 @@ public class GuideView extends FrameLayout {
 
         Rect rect = new Rect();
         anchorView.getGlobalVisibleRect(rect);
-        rect.top = rect.top - paddingTop;
-        rect.left = rect.left - paddingLeft;
-        rect.right = rect.right - paddingRight;
-        rect.bottom = rect.bottom - paddingBottom;
         return rect;
     }
 
@@ -184,7 +180,7 @@ public class GuideView extends FrameLayout {
         }
 
         public void build() {
-            if (isShowGuide(mTag) && !isHide && !isDestroy && mActivity != null && mActivity.getResources() != null) {
+            if (isShowGuide(mTag) && !isHide && !isDestroy && mActivity != null && mActivity.getResources() != null && mActivity.getResources().getDisplayMetrics() != null) {
                 Drawable bitmap = mActivity.getResources().getDrawable(mResId);
                 if (bitmap == null) {
                     if (BuildConfig.DEBUG) {
@@ -217,15 +213,10 @@ public class GuideView extends FrameLayout {
                 mImageView = new ImageView(mActivity);
 
                 mImageView.setImageDrawable(bitmap);
-                FrameLayout.MarginLayoutParams params = new MarginLayoutParams(bitmap.getIntrinsicWidth(), bitmap.getIntrinsicHeight());
-                if (mScale == ImageView.ScaleType.FIT_XY) {
-                    int bWidth = bitmap.getIntrinsicWidth();
-                    int bHeight = bitmap.getIntrinsicHeight();
-                    int width =mActivity.getResources().getDisplayMetrics().widthPixels;
-                    int height = width * bHeight / bWidth;
-                    params = new MarginLayoutParams(width, height);
-                    mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                }
+                mImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                mImageView.setAdjustViewBounds(true);
+
+                MarginLayoutParams params = new MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 mGuideView.addView(mImageView, -1, params);
 
                 mGuideView.setBackgroundColor(Color.parseColor("#b2000000"));
@@ -247,7 +238,7 @@ public class GuideView extends FrameLayout {
 
         @Override
         public void onGlobalLayout() {
-            mGravityStrategy.showGuideView(mImageView, mAnchorView, mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom);
+            mGravityStrategy.showGuideView(mImageView, mAnchorView, UIUtils.dip2px(mPaddingLeft), UIUtils.dip2px(mPaddingTop), UIUtils.dip2px(mPaddingRight), UIUtils.dip2px(mPaddingBottom));
             mGuideView.bringToFront();
             mGuideView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
         }
@@ -283,7 +274,8 @@ public class GuideView extends FrameLayout {
     }
 
     private static boolean isShowGuide(String tag) {
-        return SPHelper.get().get(tag, true);
+//        return SPHelper.get().get(tag, true);
+        return true;
     }
 
     private static void hideGuide(String tag) {
