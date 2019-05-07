@@ -57,6 +57,11 @@ public class AuthorityDialog extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    public boolean onSetupScreenOrientation() {
+        return true;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
     }

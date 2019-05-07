@@ -47,7 +47,6 @@
         <activity
             android:name=".dialog.AuthorityDialog"
             android:configChanges="uiMode"
-            android:screenOrientation="portrait"
             android:theme="@style/AuthorityDialog">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
