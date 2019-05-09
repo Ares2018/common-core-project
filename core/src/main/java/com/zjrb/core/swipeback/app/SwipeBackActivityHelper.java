@@ -3,9 +3,9 @@ package com.zjrb.core.swipeback.app;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.zjrb.core.R;
 import com.zjrb.core.swipeback.SwipeBackLayout;
@@ -30,6 +30,9 @@ public class SwipeBackActivityHelper implements SwipeBackLayout.SwipeListener {
     public void onActivityCreate() {
         mActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mActivity.getWindow().getDecorView().setBackgroundDrawable(null);
+        View contentView = mActivity.getWindow().getDecorView().findViewById(android.R.id.content);
+        contentView.setBackgroundColor(Color.WHITE);
+
         mSwipeBackLayout = (SwipeBackLayout) LayoutInflater.from(mActivity).inflate(R.layout.module_core_swipeback_layout, null);
         mSwipeBackLayout.setScrollThresHold(1f - ACTIVITY_SCALE);
         mSwipeBackLayout.addSwipeListener(this);
@@ -54,14 +57,16 @@ public class SwipeBackActivityHelper implements SwipeBackLayout.SwipeListener {
     public void onScrollStateChange(int state, float scrollPercent) {
         Activity activity = AppManager.get().preActivity(mActivity);
         if (activity != null) {
-            View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
-
-            float percent = scrollPercent + ACTIVITY_SCALE;
-            if (percent >= 1) {
-                percent = 1;
+            ViewGroup contentView = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+            View view = contentView.getChildAt(0);
+            if (view != null) {
+                float percent = scrollPercent + ACTIVITY_SCALE;
+                if (percent >= 1) {
+                    percent = 1;
+                }
+                view.setScaleX(percent);
+                view.setScaleY(percent);
             }
-            view.setScaleX(percent);
-            view.setScaleY(percent);
         }
     }
 
@@ -70,10 +75,12 @@ public class SwipeBackActivityHelper implements SwipeBackLayout.SwipeListener {
         Utils.convertActivityToTranslucent(mActivity);
         Activity activity = AppManager.get().preActivity(mActivity);
         if (activity != null) {
-            activity.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-            View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
-            view.setScaleX(ACTIVITY_SCALE);
-            view.setScaleY(ACTIVITY_SCALE);
+            ViewGroup contentView = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+            View view = contentView.getChildAt(0);
+            if (view != null) {
+                view.setScaleX(ACTIVITY_SCALE);
+                view.setScaleY(ACTIVITY_SCALE);
+            }
         }
     }
 

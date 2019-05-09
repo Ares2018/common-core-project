@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.zjrb.core.swipeback.SwipeBackLayout;
 import com.zjrb.core.swipeback.Utils;
@@ -81,9 +82,12 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
         super.finish();
         Activity activity = AppManager.get().preActivity(this);
         if (activity != null) {
-            View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
-            view.setScaleX(1f);
-            view.setScaleY(1f);
+            ViewGroup contentView = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+            View view = contentView.getChildAt(0);
+            if (view != null) {
+                view.setScaleX(1f);
+                view.setScaleY(1f);
+            }
         }
     }
 
