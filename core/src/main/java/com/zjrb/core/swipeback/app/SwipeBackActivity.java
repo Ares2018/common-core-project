@@ -79,6 +79,17 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        ViewGroup contentView = getWindow().getDecorView().findViewById(android.R.id.content);
+        View view = contentView.getChildAt(0);
+        if (view != null && view.getScaleX() < 1f) {
+            view.setScaleX(1f);
+            view.setScaleY(1f);
+        }
+    }
+
+    @Override
     public void finish() {
         super.finish();
         Activity activity = AppManager.get().preActivity(this);
