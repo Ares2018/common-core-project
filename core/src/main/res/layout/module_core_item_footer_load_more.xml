@@ -30,8 +30,8 @@
             android:layout_marginLeft="9dp"
             android:maxLines="1"
             android:text="@string/module_core_loading"
-            android:textColor="@color/_484848_7a7b7d"
-            android:textSize="@dimen/ts_11sp" />
+            android:textColor="@color/_666666"
+            android:textSize="@dimen/ts_14sp" />
     </LinearLayout>
 
     <FrameLayout
@@ -47,8 +47,8 @@
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
             android:text="@string/core_footer_load_error_tip"
-            android:textColor="@color/_484848_7a7b7d"
-            android:textSize="@dimen/ts_11sp" />
+            android:textColor="@color/_666666"
+            android:textSize="@dimen/ts_14sp" />
 
     </FrameLayout>
 
@@ -60,8 +60,8 @@
         android:clickable="true"
         android:gravity="center"
         android:text="@string/core_footer_load_no_more_tip"
-        android:textColor="@color/_484848_7a7b7d"
-        android:textSize="@dimen/ts_11sp"
+        android:textColor="@color/_666666"
+        android:textSize="@dimen/ts_14sp"
         android:visibility="gone" />
 
 </FrameLayout>

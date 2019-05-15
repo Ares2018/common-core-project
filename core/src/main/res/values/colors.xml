@@ -46,5 +46,6 @@
     <color name="_00000000_5c5c5c">#00000000</color>
     <color name="default_top_bar_title_color">#ffffff</color>
     <color name="default_top_bar_divider_color">@color/colorPrimary</color>
+    <color name="_666666">#666666</color>
 
 </resources>
