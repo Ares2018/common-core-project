@@ -15,6 +15,7 @@
         android:visibility="invisible">
 
         <com.zjrb.core.load.indicator.LoadingIndicatorView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:indicatorColor="@color/_484848_7a7b7d"
@@ -27,7 +28,6 @@
             android:id="@+id/tv_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="9dp"
             android:maxLines="1"
             android:text="@string/module_core_loading"
             android:textColor="@color/_666666"
