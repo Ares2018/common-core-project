@@ -397,8 +397,8 @@ public class AppUtils {
     public static int getAndroidSDKVersion() {
         /*
          * Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH
-		 * 判断当前Android版本号与目标版本号大小 运用于版本兼容
-		 */
+         * 判断当前Android版本号与目标版本号大小 运用于版本兼容
+         */
         int version = 0;
         try {
             version = Integer.valueOf(Build.VERSION.SDK_INT);
@@ -622,7 +622,11 @@ public class AppUtils {
                 + (Build.PRODUCT.length() % 10);
         String serial;
         try {
-            serial = Build.class.getField("SERIAL").get(null).toString();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && (ActivityCompat.checkSelfPermission(UIUtils.getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
+                serial = Build.getSerial();
+            } else {
+                serial = Build.class.getField("SERIAL").get(null).toString();
+            }
             return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
         } catch (Exception e) {
             serial = "serial"; // some value
