@@ -622,7 +622,7 @@ public class AppUtils {
                 + (Build.PRODUCT.length() % 10);
         String serial;
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && (ActivityCompat.checkSelfPermission(UIUtils.getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (ActivityCompat.checkSelfPermission(UIUtils.getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
                 serial = Build.getSerial();
             } else {
                 serial = Build.class.getField("SERIAL").get(null).toString();
