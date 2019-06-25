@@ -190,6 +190,19 @@ public class HeaderRefresh extends PageItem {
         mIvSearch = findViewById(R.id.iv_search);
     }
 
+    /**
+     * 自动下拉刷新
+     */
+    public void autoRefresh(){
+        heightTo(itemView.getMinimumHeight()+1);
+        itemView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                autoRecovery();
+            }
+        },100);
+    }
+
 
     // 自动复原
     private void autoRecovery() {
