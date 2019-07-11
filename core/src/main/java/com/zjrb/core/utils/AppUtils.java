@@ -1,6 +1,5 @@
 package com.zjrb.core.utils;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -15,10 +14,7 @@ import android.content.pm.Signature;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
-import android.telephony.TelephonyManager;
 import android.text.InputFilter;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -27,7 +23,6 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
 import android.view.DisplayCutout;
 import android.widget.EditText;
-
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -65,6 +60,11 @@ public class AppUtils {
 
     // 渠道名称
     private static String sChannelName = "";
+
+    /**
+     * 唯一设备号
+     */
+    private static String unique_id;
 
     /**
      * 该工具不能被创建实例
@@ -608,32 +608,13 @@ public class AppUtils {
         return resultData;
     }
 
-
     /**
-     * 不需要权限的唯一设备号
-     * 返回 pseudo unique ID
-     * 支持API 9 以上
-     * 每秒1兆的值（一万亿），需要100亿年才有可能发生重复  覆盖率为98.4%，剩下的为在系统9以下
-     *
-     * @return ID
+     * 获取设备号
+     * @return
      */
     public static String getUniquePsuedoID() {
-        String m_szDevIDShort = "24" + (Build.BOARD.length() % 10) + (Build.BRAND.length() % 10)
-                + (Build.CPU_ABI.length() % 10) + (Build.DEVICE.length() % 10)
-                + (Build.MANUFACTURER.length() % 10) + (Build.MODEL.length() % 10)
-                + (Build.PRODUCT.length() % 10);
-        String serial;
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (ActivityCompat.checkSelfPermission(UIUtils.getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
-                serial = Build.getSerial();
-            } else {
-                serial = Build.class.getField("SERIAL").get(null).toString();
-            }
-            return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
-        } catch (Exception e) {
-            serial = "serial"; // some value
-        }
-        return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+        if (unique_id == null) unique_id = UniqueID.getPseudoID(UIUtils.getContext(), "24");
+        return unique_id;
     }
 
     /**
