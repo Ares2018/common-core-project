@@ -11,6 +11,8 @@ package com.zjrb.coreproject;
 
 import android.app.Application;
 
+import com.zjrb.core.utils.UIUtils;
+
 /**
  * Application基类：封装了主线程、上下文、handler、looper、主线程Id
  *
@@ -22,7 +24,6 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
+        UIUtils.init(this);
     }
 }

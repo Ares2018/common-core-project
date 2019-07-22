@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -18,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/module_core_ic_refresh_map" />
+            android:src="@mipmap/module_core_ic_refresh_map"
+            app:maskColor="@color/_00000000_7a7b7c" />
 
         <ImageView
             android:id="@+id/iv_search"
@@ -28,7 +28,8 @@
             android:layout_alignBottom="@id/iv_map"
             android:layout_alignRight="@id/iv_map"
             android:layout_marginRight="-6dp"
-            android:src="@mipmap/module_core_ic_refresh_search" />
+            android:src="@mipmap/module_core_ic_refresh_search"
+            app:maskColor="@android:color/transparent" />
 
         <TextView
             android:id="@+id/tv_state"
@@ -38,7 +39,9 @@
             android:layout_marginLeft="11dp"
             android:layout_toRightOf="@id/iv_map"
             android:text="正在刷新中"
-            android:textColor="@color/tc_a5a5a5"
+            android:textColor="@color/_a5a5a5_7a7b7d"
             android:textSize="@dimen/ts_11sp" />
+
     </RelativeLayout>
+
 </FrameLayout>

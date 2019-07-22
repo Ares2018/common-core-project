@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zjrb.core.R;
 import com.zjrb.core.base.BaseActivity;
 import com.zjrb.core.permission.PermissionGroup;
-import com.zjrb.core.load.ILoad;
 import com.zjrb.core.utils.AppUtils;
 
 import java.util.ArrayList;
@@ -59,6 +57,11 @@ public class AuthorityDialog extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    public boolean onSetupScreenOrientation() {
+        return true;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
     }
@@ -72,15 +75,5 @@ public class AuthorityDialog extends BaseActivity implements View.OnClickListene
             setResult(Activity.RESULT_CANCELED);
         }
         finish();
-    }
-
-    @Override
-    public ILoad replaceLoad(ViewGroup parent, View pageView) {
-        return null;
-    }
-
-    @Override
-    public boolean isShowTopBar() {
-        return false;
     }
 }

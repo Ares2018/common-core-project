@@ -1,6 +1,6 @@
 package com.zjrb.core.utils;
 
-import android.Manifest;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.ComponentName;
@@ -14,18 +14,15 @@ import android.content.pm.Signature;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
-import android.telephony.TelephonyManager;
 import android.text.InputFilter;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
+import android.view.DisplayCutout;
 import android.widget.EditText;
-
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -63,6 +60,11 @@ public class AppUtils {
 
     // 渠道名称
     private static String sChannelName = "";
+
+    /**
+     * 唯一设备号
+     */
+    private static String unique_id;
 
     /**
      * 该工具不能被创建实例
@@ -397,8 +399,8 @@ public class AppUtils {
     public static int getAndroidSDKVersion() {
         /*
          * Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH
-		 * 判断当前Android版本号与目标版本号大小 运用于版本兼容
-		 */
+         * 判断当前Android版本号与目标版本号大小 运用于版本兼容
+         */
         int version = 0;
         try {
             version = Integer.valueOf(Build.VERSION.SDK_INT);
@@ -606,28 +608,13 @@ public class AppUtils {
         return resultData;
     }
 
-
     /**
-     * 不需要权限的唯一设备号
-     * 返回 pseudo unique ID
-     * 支持API 9 以上
-     * 每秒1兆的值（一万亿），需要100亿年才有可能发生重复  覆盖率为98.4%，剩下的为在系统9以下
-     *
-     * @return ID
+     * 获取设备号
+     * @return
      */
     public static String getUniquePsuedoID() {
-        String m_szDevIDShort = "24" + (Build.BOARD.length() % 10) + (Build.BRAND.length() % 10)
-                + (Build.CPU_ABI.length() % 10) + (Build.DEVICE.length() % 10)
-                + (Build.MANUFACTURER.length() % 10) + (Build.MODEL.length() % 10)
-                + (Build.PRODUCT.length() % 10);
-        String serial;
-        try {
-            serial = Build.class.getField("SERIAL").get(null).toString();
-            return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
-        } catch (Exception e) {
-            serial = "serial"; // some value
-        }
-        return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+        if (unique_id == null) unique_id = UniqueID.getPseudoID(UIUtils.getContext(), "24");
+        return unique_id;
     }
 
     /**
@@ -769,5 +756,107 @@ public class AppUtils {
         }
         context.startActivity(localIntent);
     }
+
+    /**
+     * 是否有刘海屏
+     *
+     * @return
+     */
+    public static boolean hasNotchInScreen(Activity activity) {
+
+        // android  P 以上有标准 API 来判断是否有刘海屏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            DisplayCutout displayCutout = activity.getWindow().getDecorView().getRootWindowInsets().getDisplayCutout();
+            if (displayCutout != null) {
+                // 说明有刘海屏
+                return true;
+            }
+        } else {
+            // 通过其他方式判断是否有刘海屏  目前官方提供有开发文档的就 小米，vivo，华为（荣耀），oppo
+            String manufacturer = Build.MANUFACTURER;
+
+            if (TextUtils.isEmpty(manufacturer)) {
+                return false;
+            } else if (manufacturer.equalsIgnoreCase("HUAWEI")) {
+                return hasNotchHw(activity);
+            } else if (manufacturer.equalsIgnoreCase("xiaomi")) {
+                return hasNotchXiaoMi(activity);
+            } else if (manufacturer.equalsIgnoreCase("oppo")) {
+                return hasNotchOPPO(activity);
+            } else if (manufacturer.equalsIgnoreCase("vivo")) {
+                return hasNotchVIVO(activity);
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 判断vivo是否有刘海屏
+     * https://swsdl.vivo.com.cn/appstore/developer/uploadfile/20180328/20180328152252602.pdf
+     *
+     * @param activity
+     * @return
+     */
+    private static boolean hasNotchVIVO(Activity activity) {
+        try {
+            Class<?> c = Class.forName("android.util.FtFeature");
+            Method get = c.getMethod("isFeatureSupport", int.class);
+            return (boolean) (get.invoke(c, 0x20));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 判断oppo是否有刘海屏
+     * https://open.oppomobile.com/wiki/doc#id=10159
+     *
+     * @param activity
+     * @return
+     */
+    private static boolean hasNotchOPPO(Activity activity) {
+        return activity.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
+    }
+
+    /**
+     * 判断xiaomi是否有刘海屏
+     * https://dev.mi.com/console/doc/detail?pId=1293
+     *
+     * @param activity
+     * @return
+     */
+    private static boolean hasNotchXiaoMi(Activity activity) {
+        try {
+            Class<?> c = Class.forName("android.os.SystemProperties");
+            Method get = c.getMethod("getInt", String.class, int.class);
+            return (int) (get.invoke(c, "ro.miui.notch", 1)) == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 判断华为是否有刘海屏
+     * https://devcenter-test.huawei.com/consumer/cn/devservice/doc/50114
+     *
+     * @param activity
+     * @return
+     */
+    private static boolean hasNotchHw(Activity activity) {
+
+        try {
+            ClassLoader cl = activity.getClassLoader();
+            Class HwNotchSizeUtil = cl.loadClass("com.huawei.android.util.HwNotchSizeUtil");
+            Method get = HwNotchSizeUtil.getMethod("hasNotchInScreen");
+            return (boolean) get.invoke(HwNotchSizeUtil);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
 }

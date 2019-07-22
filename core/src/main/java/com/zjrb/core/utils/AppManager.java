@@ -93,6 +93,23 @@ public class AppManager {
         return mActivityStack.peek();
     }
 
+    /**
+     * 前一个Activity
+     * @param cur 当前Activity
+     * @return
+     */
+    public Activity preActivity(Activity cur){
+        Stack<Activity> activities = AppManager.get().getAllActivity();
+        if (activities != null && !activities.isEmpty()) {
+            int index = activities.indexOf(cur);
+            if (index > 0) {
+                index--;
+                return activities.get(index);
+            }
+        }
+        return null;
+    }
+
 
     /**
      * 获取指定的Activity

@@ -96,7 +96,7 @@ public class CircleImageView extends AppCompatImageView implements UiModeChangeL
     private void init() {
         super.setScaleType(SCALE_TYPE);
         mReady = true;
-        mMaskColor = ContextCompat.getColor(getContext(), R.color.color_7f000000_night);
+        mMaskColor = ContextCompat.getColor(getContext(), R.color._7f000000);
         if (mSetupPending) {
             setup();
             mSetupPending = false;
@@ -305,7 +305,7 @@ public class CircleImageView extends AppCompatImageView implements UiModeChangeL
     public void onUiModeChange() {
         if (getDrawable() != null) {
 
-            mMaskColor = ContextCompat.getColor(getContext(), R.color.color_7f000000_night);
+            mMaskColor = ContextCompat.getColor(getContext(), R.color._7f000000);
             mColorFilter = new PorterDuffColorFilter(mMaskColor, PorterDuff.Mode.SRC_ATOP);
 
             invalidate();

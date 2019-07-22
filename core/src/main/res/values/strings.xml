@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">CoreProjectLibrary</string>
     <string name="module_core_loading">加载中...</string>
-    <string name="module_core_load_error">加载失败,点击重试</string>
+    <string name="module_core_load_error">网络不给力,点击重试</string>
+    <string name="module_core_load_error_tip">网络不给力</string>
+    <string name="core_footer_load_error_tip">网络不给力，请点击重试</string>
+    <string name="core_footer_load_no_more_tip">没有更多</string>
 
     <string name="module_core_tip_ok">确定</string>
     <string name="module_core_tip_cancel">取消</string>
@@ -52,4 +55,8 @@
     <string name="module_core_scaner_error">未找到二维码</string>
     <string name="module_core_scaner_read_error">二维码读取失败</string>
     <string name="authority_tip">您已拒绝了%1$s，请在手机系统中开启浙江新闻的%2$s</string>
+
+    <string name="first_activity_name">SplashActivity</string>
+    <string name="action_recovery_from_background">RECOVERY_FROM_BACKGROUND</string>
+    <string name="action_enter_the_background">ENTER_THE_BACKGROUND</string>
 </resources>

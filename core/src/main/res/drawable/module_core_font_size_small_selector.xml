@@ -4,14 +4,14 @@
         <layer-list>
             <item>
                 <shape android:shape="oval">
-                    <stroke android:width="0.4dp" android:color="@color/color_484848" />
+                    <stroke android:width="0.4dp" android:color="@color/_484848_7a7b7d" />
                     <size android:width="16dp" android:height="16dp" />
                     <solid android:color="@android:color/transparent" />
                 </shape>
             </item>
             <item android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp">
                 <shape android:shape="oval">
-                    <solid android:color="@color/color_484848" />
+                    <solid android:color="@color/_484848_7a7b7d" />
                 </shape>
             </item>
         </layer-list>
@@ -19,7 +19,7 @@
     <item android:state_checked="false">
         <shape android:shape="oval">
             <size android:width="16dp" android:height="16dp" />
-            <stroke android:width="0.4dp" android:color="@color/color_484848" />
+            <stroke android:width="0.4dp" android:color="@color/_484848_7a7b7d" />
             <solid android:color="@android:color/transparent" />
         </shape>
     </item>

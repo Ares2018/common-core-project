@@ -1,12 +1,15 @@
 
 package com.zjrb.core.swipeback.app;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.zjrb.core.swipeback.SwipeBackLayout;
 import com.zjrb.core.swipeback.Utils;
+import com.zjrb.core.utils.AppManager;
 
 
 /**
@@ -39,8 +42,9 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
     @Override
     public View findViewById(int id) {
         View v = super.findViewById(id);
-        if (v == null && mHelper != null)
+        if (v == null && mHelper != null) {
             return mHelper.findViewById(id);
+        }
         return v;
     }
 
@@ -72,6 +76,31 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
     public void scrollToFinishActivity() {
         Utils.convertActivityToTranslucent(this);
         getSwipeBackLayout().scrollToFinishActivity();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ViewGroup contentView = getWindow().getDecorView().findViewById(android.R.id.content);
+        View view = contentView.getChildAt(0);
+        if (view != null && view.getScaleX() < 1f) {
+            view.setScaleX(1f);
+            view.setScaleY(1f);
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        Activity activity = AppManager.get().preActivity(this);
+        if (activity != null) {
+            ViewGroup contentView = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+            View view = contentView.getChildAt(0);
+            if (view != null) {
+                view.setScaleX(1f);
+                view.setScaleY(1f);
+            }
+        }
     }
 
     /**

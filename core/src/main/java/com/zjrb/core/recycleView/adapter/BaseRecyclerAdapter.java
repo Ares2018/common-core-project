@@ -110,7 +110,7 @@ public abstract class BaseRecyclerAdapter<T> extends DecorAdapter {
     @Override
     public final int getItemViewType(int position) {
         int viewType = super.getItemViewType(position);
-        if (viewType == DecorAdapter.DEFAULT_VIEW_TYPE) {
+        if (viewType == DEFAULT_VIEW_TYPE) {
             viewType = getAbsItemViewType(cleanPosition(position));
         }
         return viewType;
@@ -123,7 +123,7 @@ public abstract class BaseRecyclerAdapter<T> extends DecorAdapter {
      * @return int类型
      */
     public int getAbsItemViewType(int position) {
-        return DecorAdapter.DEFAULT_VIEW_TYPE;
+        return DEFAULT_VIEW_TYPE;
     }
 
     /**

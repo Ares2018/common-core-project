@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,17 +7,18 @@
 
     <TextView
         android:id="@+id/tv_msg"
+        android:minHeight="89dp"
         android:layout_width="match_parent"
-        android:layout_height="89dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="17dp"
-        android:textColor="@color/tc_484848"
+        android:textColor="@color/_484848_7a7b7d"
         android:textSize="@dimen/ts_15sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/dc_cecece" />
+        android:background="@color/_cecece_7a7b7d" />
 
     <Button
         android:id="@+id/btn_ok"
@@ -28,6 +28,7 @@
         android:background="@null"
         android:gravity="center"
         android:text="@string/module_core_tip_ok"
-        android:textColor="@color/tc_f44b50"
+        android:textColor="@color/_f44b50_8e3636"
         android:textSize="@dimen/ts_16sp" />
+
 </LinearLayout>

@@ -467,12 +467,13 @@ public class SwipeBackLayout extends FrameLayout {
         a.recycle();
 
         ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
-        ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
-        decorChild.setBackgroundResource(background);
-        decor.removeView(decorChild);
-        addView(decorChild);
-        setContentView(decorChild);
-        decor.addView(this);
+        View contentView = decor.getChildAt(0);
+        ViewGroup parent = (ViewGroup) contentView.getParent();
+        contentView.setBackgroundResource(background);
+        parent.removeView(contentView);
+        addView(contentView);
+        setContentView(contentView);
+        parent.addView(this);
     }
 
     @Override
@@ -539,15 +540,30 @@ public class SwipeBackLayout extends FrameLayout {
                 mScrollPercent = Math.abs((float) top
                         / (mContentView.getHeight() + mShadowBottom.getIntrinsicHeight()));
             }
+
+            if (mListeners != null
+                    && !mListeners.isEmpty()
+                    && mDragHelper.getViewDragState() == STATE_DRAGGING
+                    && mScrollPercent <= mScrollThreshold
+                    && mIsScrollOverValid) {
+                for (SwipeListener listener : mListeners) {
+                    if (mScrollPercent <= mScrollThreshold) {
+                        listener.onScrollStateChange(mDragHelper.getViewDragState(), mScrollPercent);
+                    }
+                }
+            }
+
             mContentLeft = left;
             mContentTop = top;
             invalidate();
             if (mScrollPercent < mScrollThreshold && !mIsScrollOverValid) {
                 mIsScrollOverValid = true;
             }
-            if (mListeners != null && !mListeners.isEmpty()
+            if (mListeners != null
+                    && !mListeners.isEmpty()
                     && mDragHelper.getViewDragState() == STATE_DRAGGING
-                    && mScrollPercent >= mScrollThreshold && mIsScrollOverValid) {
+                    && mScrollPercent >= mScrollThreshold
+                    && mIsScrollOverValid) {
                 mIsScrollOverValid = false;
                 for (SwipeListener listener : mListeners) {
                     listener.onScrollOverThreshold();

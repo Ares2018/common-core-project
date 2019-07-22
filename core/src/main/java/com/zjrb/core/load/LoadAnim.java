@@ -2,9 +2,7 @@ package com.zjrb.core.load;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -14,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
 import android.graphics.drawable.Animatable;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -191,24 +190,11 @@ public class LoadAnim extends AppCompatImageView implements Animatable, UiModeCh
     private static TypedValue sOutValue = new TypedValue();
 
     private int getZheColor() {
-        return getResources().getColor(R.color.color_zhe);
+        return ContextCompat.getColor(getContext(), R.color._eeecec_3f4042);
     }
 
     private int getZheFlashColor() {
-        return getResources().getColor(R.color.color_zhe_flash);
+        return ContextCompat.getColor(getContext(), R.color._cacaca_595a5c);
     }
 
-    private int resolveAttribute(int resId) {
-        Resources.Theme theme = getContext().getTheme();
-        if (theme.resolveAttribute(resId, sOutValue, true)) {
-            switch (sOutValue.type) {
-                case TypedValue.TYPE_INT_COLOR_ARGB4:
-                case TypedValue.TYPE_INT_COLOR_ARGB8:
-                case TypedValue.TYPE_INT_COLOR_RGB4:
-                case TypedValue.TYPE_INT_COLOR_RGB8:
-                    return sOutValue.data;
-            }
-        }
-        return Color.TRANSPARENT;
-    }
 }

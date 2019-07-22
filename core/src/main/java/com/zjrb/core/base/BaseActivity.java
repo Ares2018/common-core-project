@@ -2,6 +2,7 @@ package com.zjrb.core.base;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,9 +18,9 @@ import android.view.View;
 
 import com.aliya.uimode.UiModeManager;
 import com.zjrb.core.R;
-import com.zjrb.core.utils.AppManager;
 import com.zjrb.core.permission.IPermissionOperate;
 import com.zjrb.core.permission.PermissionManager;
+import com.zjrb.core.utils.AppManager;
 import com.zjrb.core.utils.AppUtils;
 import com.zjrb.core.utils.DensityHelper;
 
@@ -37,6 +38,9 @@ public abstract class BaseActivity extends LifecycleActivity implements IPermiss
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (!onSetupTheme()) {
+//            ThemeMode.fitActivityTheme(this);
+        }
         // 设置夜间模式 inflater factor
         UiModeManager.setInflaterFactor(getLayoutInflater());
         super.onCreate(savedInstanceState);
@@ -85,30 +89,20 @@ public abstract class BaseActivity extends LifecycleActivity implements IPermiss
     @Override
     protected void onDestroy() {
         AppManager.get().removeActivity(this);
+//        mAnalytics.sendWithDuration();
         super.onDestroy();
     }
 
     @Override
-    public Resources getResources() {
-        if (isUseSystemConfig()) { // 使用系统配置
-            return super.getResources();
+    protected void attachBaseContext(Context newBase) {
+        if (isUseSystemConfig()) {
+            super.attachBaseContext(newBase);
         } else {
-            Resources res = super.getResources();
-            Configuration config;
-            config = res.getConfiguration();
-            config.setToDefaults(); // 重置为默认
-
+            final Resources res = newBase.getResources();
+            final Configuration config = res.getConfiguration();
             config.densityDpi = DensityHelper.matchTheoryDpi();
-            /**
-             *  0.8   0.9  1.0  1.1  1.2  1.35  1.5  <br/>
-             *   |    |     |    |    |    ｜　　｜  <br/>
-             * 极小 特小   小　 中   大   特大  超大 <br/>
-             */
-            // 在这里设置字号
-            // config.fontScale =
-
-            res.updateConfiguration(config, res.getDisplayMetrics());
-            return res;
+            final Context newContext = newBase.createConfigurationContext(config);
+            super.attachBaseContext(newContext);
         }
     }
 

@@ -3,9 +3,11 @@ package com.zjrb.core.recycleView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.core.network.api.ApiGenericCarrier;
 import com.zjrb.core.R;
 import com.zjrb.core.load.LoadMoreListener;
 import com.zjrb.core.load.LoadingCallBack;
+import com.zjrb.core.utils.UIUtils;
 
 /**
  * 上拉加载更多 - footer
@@ -14,7 +16,7 @@ import com.zjrb.core.load.LoadingCallBack;
  * @date 2017/8/24 18:11.
  */
 public class FooterLoadMore<M> extends PageItem implements LoadMore, View.OnClickListener,
-        View.OnAttachStateChangeListener, LoadingCallBack<M> {
+        View.OnAttachStateChangeListener, LoadingCallBack<M> , ApiGenericCarrier {
 
     private int state = 0;
     private boolean isLoading = false;
@@ -36,6 +38,14 @@ public class FooterLoadMore<M> extends PageItem implements LoadMore, View.OnClic
         mErrorMoreView.setOnClickListener(this);
         itemView.addOnAttachStateChangeListener(this);
         this.loadMoreListener = loadMoreListener;
+    }
+
+    /**
+     * 获取加载更多listener
+     * @return
+     */
+    public LoadMoreListener getLoadMoreListener(){
+        return loadMoreListener;
     }
 
     /**
@@ -116,4 +126,20 @@ public class FooterLoadMore<M> extends PageItem implements LoadMore, View.OnClic
         }
     }
 
+    @Override
+    public Class getGenericRealize() {
+        if (loadMoreListener == null) {
+            if (UIUtils.isDebuggable()) {
+                throw new IllegalArgumentException("FooterLoadMore 需要传入回调接口 LoadMoreListener");
+            }else{
+                return null;
+            }
+        }
+        return loadMoreListener.getClass();
+    }
+
+    @Override
+    public Class getGenericDefine() {
+        return LoadMoreListener.class;
+    }
 }

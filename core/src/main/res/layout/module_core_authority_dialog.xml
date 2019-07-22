@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:background="@color/bc_ffffff"
+        android:background="@drawable/bg_dialog_global"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -19,25 +16,25 @@
             android:id="@+id/authority_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="38dp"
             app:srcCompat="@mipmap/authority" />
 
         <TextView
             android:id="@+id/authority_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="29dp"
-            android:layout_marginLeft="22.5dp"
-            android:layout_marginRight="22.5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="30dp"
             android:text="@string/authority_tip"
-            android:textColor="@color/tc_000000"
-            android:textSize="14sp" />
+            android:textColor="@color/_484848_7a7b7d"
+            android:textSize="16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
-            android:background="#dddddd" />
+            android:background="@color/_dddddd_343434" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,15 +47,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:paddingBottom="13.2dp"
-                android:paddingTop="13.2dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="16dp"
                 android:text="取消"
-                android:textColor="@color/tc_000000" />
+                android:textColor="@color/_484848_7a7b7d"
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="1.5dp"
                 android:layout_height="46dp"
-                android:background="#dddddd" />
+                android:background="@color/_dddddd_343434" />
 
             <TextView
                 android:id="@+id/authority_setting"
@@ -66,11 +64,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:paddingBottom="13.2dp"
-                android:paddingTop="13.2dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="16dp"
                 android:text="设置"
-                android:textColor="@color/tc_f44b50"
-                android:textSize="14sp" />
+                android:textColor="@color/_d12324_520d0d"
+                android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.zjrb.core.base;
 
-import android.support.annotation.IdRes;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.LinearLayout;
 import com.aliya.view.fitsys.FitWindowsFrameLayout;
 import com.aliya.view.fitsys.FitWindowsLinearLayout;
 import com.zjrb.core.swipeback.app.SwipeBackActivity;
-import com.zjrb.core.load.ILoad;
 
 /**
  * 自己封装的ToolBarActivity
@@ -28,14 +26,13 @@ public abstract class ToolBarActivity extends SwipeBackActivity {
     /**
      * 根布局容器
      */
-    private ViewGroup mRootContainer;
+    protected ViewGroup mRootContainer;
 
     /**
      * 自己的根布局
      */
-    View contentView;
-
-    View topBarLayout;
+    protected View contentView;
+    protected View topBarLayout;
 
 
     @Override
@@ -108,22 +105,6 @@ public abstract class ToolBarActivity extends SwipeBackActivity {
         } else {
             mRootContainer.addView(topBarLayout);
         }
-    }
-
-    /**
-     * 替换加载View
-     *
-     * @param pageView 需要替换成加载View的该页面View
-     */
-    public abstract ILoad replaceLoad(ViewGroup parent,View pageView);
-
-    /**
-     * 替换加载View
-     *
-     * @param id 需要替换成加载View的该页面View的id
-     */
-    public ILoad replaceLoad(@IdRes int id) {
-        return replaceLoad(mRootContainer,mRootContainer.findViewById(id));
     }
 
     public boolean isOverly() {

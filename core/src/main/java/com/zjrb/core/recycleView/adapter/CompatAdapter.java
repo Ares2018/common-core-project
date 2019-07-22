@@ -51,6 +51,13 @@ public interface CompatAdapter {
     boolean isOverlayViewType(int position);
 
     /**
+     * 是否是群众之声
+     * @param position
+     * @return
+     */
+    boolean isVoiceOfMassType(int position);
+
+    /**
      * 创建悬浮ViewHolder
      *
      * @param parent   .
