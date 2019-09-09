@@ -35,9 +35,7 @@ public class EmptyPageHolder extends PageItem {
     public EmptyPageHolder(ViewGroup parent, ArgsBuilder args) {
         super(inflate(R.layout.module_core_layout_footer_empty, parent, false));
         ButterKnife.bind(this, itemView);
-
         bindView(args);
-
     }
 
     private void bindView(ArgsBuilder args) {
@@ -49,6 +47,10 @@ public class EmptyPageHolder extends PageItem {
         if (!TextUtils.isEmpty(args.content)) {
             mTvContent.setText(args.content);
         }
+
+        if (args.textAppearance != 0) {
+            mTvContent.setTextAppearance(mTvContent.getContext(), args.textAppearance);
+        }
     }
 
     /**
@@ -59,9 +61,10 @@ public class EmptyPageHolder extends PageItem {
      */
     public final static class ArgsBuilder {
 
+        private int textAppearance;
         private int resId; // 图标资源
-
         private String content; // 提示内
+
 
         private ArgsBuilder() {
         }
@@ -86,6 +89,9 @@ public class EmptyPageHolder extends PageItem {
             return this;
         }
 
+        public ArgsBuilder textAppearance(int resId) {
+            this.textAppearance = resId;
+            return this;
+        }
     }
-
 }
