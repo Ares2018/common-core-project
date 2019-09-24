@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -13,7 +14,10 @@ import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.TextAppearanceSpan;
@@ -507,5 +511,83 @@ public class UIUtils {
         } else {
             return null;
         }
+    }
+
+    public static int getFullActivityHeight(@Nullable Context context) {
+        if (!isAllScreenDevice()) {
+            return getScreenHeight(context);
+        }
+        return getScreenRealHeight(context);
+    }
+
+    private static final int PORTRAIT = 0;
+    private static final int LANDSCAPE = 1;
+    @NonNull
+    private volatile static Point[] mRealSizes = new Point[2];
+
+
+    public static int getScreenRealHeight(@Nullable Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return getScreenHeight(context);
+        }
+
+        int orientation = context != null
+                ? context.getResources().getConfiguration().orientation
+                : UIUtils.getContext().getResources().getConfiguration().orientation;
+        orientation = orientation == Configuration.ORIENTATION_PORTRAIT ? PORTRAIT : LANDSCAPE;
+
+        if (mRealSizes[orientation] == null) {
+            WindowManager windowManager = context != null
+                    ? (WindowManager) context.getSystemService(Context.WINDOW_SERVICE)
+                    : (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            if (windowManager == null) {
+                return getScreenHeight(context);
+            }
+            Display display = windowManager.getDefaultDisplay();
+            Point point = new Point();
+            display.getRealSize(point);
+            mRealSizes[orientation] = point;
+        }
+        return mRealSizes[orientation].y;
+    }
+
+    public static int getScreenHeight(@Nullable Context context) {
+        if (context != null) {
+            return context.getResources().getDisplayMetrics().heightPixels;
+        }
+        return 0;
+    }
+
+    private volatile static boolean mHasCheckAllScreen;
+    private volatile static boolean mIsAllScreenDevice;
+
+    public static boolean isAllScreenDevice() {
+        if (mHasCheckAllScreen) {
+            return mIsAllScreenDevice;
+        }
+        mHasCheckAllScreen = true;
+        mIsAllScreenDevice = false;
+        // 低于 API 21的，都不会是全面屏。。。
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return false;
+        }
+        WindowManager windowManager = (WindowManager) UIUtils.getContext().getSystemService(Context.WINDOW_SERVICE);
+        if (windowManager != null) {
+            Display display = windowManager.getDefaultDisplay();
+            Point point = new Point();
+            display.getRealSize(point);
+            float width, height;
+            if (point.x < point.y) {
+                width = point.x;
+                height = point.y;
+            } else {
+                width = point.y;
+                height = point.x;
+            }
+            if (height / width >= 1.97f) {
+                mIsAllScreenDevice = true;
+            }
+        }
+        return mIsAllScreenDevice;
     }
 }
