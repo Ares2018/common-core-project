@@ -59,4 +59,7 @@
     <string name="first_activity_name">SplashActivity</string>
     <string name="action_recovery_from_background">RECOVERY_FROM_BACKGROUND</string>
     <string name="action_enter_the_background">ENTER_THE_BACKGROUND</string>
+
+    <string name="app_md5">74:E4:3F:C1:45:72:DA:78:E0:76:E1:BD:83:E1:2F:94</string>
+    <string name="app_sha1">04:7E:81:B3:76:F7:5A:E4:A8:C2:C8:FC:7F:1B:01:30:83:14:06:DF</string>
 </resources>
