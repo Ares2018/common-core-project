@@ -5,9 +5,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.jakewharton:butterknife-gradle-plugin:9.0.0-rc1'
 
 
@@ -22,6 +24,8 @@ allprojects {
         google()
         jcenter()
         maven { url "http://10.100.62.98:8086/nexus/content/groups/public" }
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
     }
 }
 
