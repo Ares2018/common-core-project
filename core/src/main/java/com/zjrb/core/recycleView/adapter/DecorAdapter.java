@@ -435,6 +435,17 @@ public class DecorAdapter extends RecyclerView.Adapter implements CompatAdapter 
     private static final class SimpleViewHolder extends RecyclerView.ViewHolder {
         public SimpleViewHolder(View itemView) {
             super(itemView);
+            if (itemView.getParent() instanceof ViewGroup) {
+                /**
+                 * @see android.support.v7.widget.RecyclerView.Adapter#createViewHolder(ViewGroup, int)
+                 * <code>
+                 *    if (holder.itemView.getParent() != null) {
+                 *        throw new IllegalStateException("ViewHolder views must not be attached when created. Ensure that you are not passing 'true' to the attachToRoot parameter of LayoutInflater.inflate(..., boolean attachToRoot)");
+                 *    }
+                 * </code>
+                 */
+                ((ViewGroup) itemView.getParent()).removeView(itemView);
+            }
         }
     }
 
