@@ -24,7 +24,6 @@ import com.zjrb.core.utils.UIUtils;
 /**
  * Created by lixinke on 2017/10/24.
  */
-
 public class GuideView extends FrameLayout {
     private static final String TAG = "GuideView";
     private Builder mNext;
@@ -53,6 +52,8 @@ public class GuideView extends FrameLayout {
     static class BottomGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
+            if (guideView == null) return;
+
             Rect rect = getRect(anchorView);
             int bottom=rect.bottom-paddingBottom;
             guideView.layout(0, bottom - guideView.getHeight(), guideView.getWidth(), bottom);
@@ -63,6 +64,8 @@ public class GuideView extends FrameLayout {
     static class TopGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
+            if (guideView == null) return;
+
             Rect rect = getRect(anchorView);
             int top = rect.top - paddingTop;
             guideView.layout(0, top, guideView.getWidth(), top + guideView.getHeight());
@@ -74,6 +77,8 @@ public class GuideView extends FrameLayout {
     static class RightGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
+            if (guideView == null) return;
+
             Rect rect = getRect(anchorView);
             guideView.layout(rect.right - guideView.getWidth(), rect.top, rect.right, rect.top + guideView.getHeight());
             ((View) guideView.getParent()).invalidate();
@@ -83,6 +88,8 @@ public class GuideView extends FrameLayout {
     static class LeftGravity implements GravityStrategy {
         @Override
         public void showGuideView(View guideView, View anchorView, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom) {
+            if (guideView == null) return;
+
             Rect rect = getRect(anchorView);
             guideView.layout(rect.left, rect.top, rect.left + guideView.getWidth(), rect.top + guideView.getHeight());
             ((View) guideView.getParent()).invalidate();
