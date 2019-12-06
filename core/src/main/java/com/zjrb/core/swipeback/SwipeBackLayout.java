@@ -461,14 +461,13 @@ public class SwipeBackLayout extends FrameLayout {
 
     public void attachToActivity(Activity activity) {
         mActivity = activity;
-        ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
 
         /*
          * a_liYa 解决分屏在弹出视图中打开崩溃
          * java.lang.IllegalStateException
          * The specified child already has a parent. You must call removeView() on the child's parent first.
          */
-        View contentView = decor.findViewById(android.R.id.content);
+        View contentView = activity.findViewById(android.R.id.content);
         contentView.setBackgroundColor(Color.WHITE); // 白色背景，防止底下 Activity 缩放背景为黑色
         ViewGroup parent = (ViewGroup) contentView.getParent();
         parent.removeView(contentView);
