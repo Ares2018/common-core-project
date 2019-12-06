@@ -3,6 +3,7 @@ package com.zjrb.core.swipeback.app;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +31,6 @@ public class SwipeBackActivityHelper implements SwipeBackLayout.SwipeListener {
     public void onActivityCreate() {
         mActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mActivity.getWindow().getDecorView().setBackgroundDrawable(null);
-        View contentView = mActivity.getWindow().getDecorView().findViewById(android.R.id.content);
-        contentView.setBackgroundColor(Color.WHITE);
-
         mSwipeBackLayout = (SwipeBackLayout) LayoutInflater.from(mActivity).inflate(R.layout.module_core_swipeback_layout, null);
         mSwipeBackLayout.setScrollThresHold(1f - ACTIVITY_SCALE);
         mSwipeBackLayout.addSwipeListener(this);

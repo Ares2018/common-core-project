@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
@@ -460,20 +461,20 @@ public class SwipeBackLayout extends FrameLayout {
 
     public void attachToActivity(Activity activity) {
         mActivity = activity;
-        TypedArray a = activity.getTheme().obtainStyledAttributes(new int[]{
-                android.R.attr.windowBackground
-        });
-        int background = a.getResourceId(0, 0);
-        a.recycle();
-
         ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
-        View contentView = decor.getChildAt(0);
+
+        /*
+         * a_liYa 解决分屏在弹出视图中打开崩溃
+         * java.lang.IllegalStateException
+         * The specified child already has a parent. You must call removeView() on the child's parent first.
+         */
+        View contentView = decor.findViewById(android.R.id.content);
+        contentView.setBackgroundColor(Color.WHITE); // 白色背景，防止底下 Activity 缩放背景为黑色
         ViewGroup parent = (ViewGroup) contentView.getParent();
-        contentView.setBackgroundResource(background);
         parent.removeView(contentView);
         addView(contentView);
         setContentView(contentView);
-        parent.addView(this);
+        parent.addView(this, contentView.getLayoutParams());
     }
 
     @Override
