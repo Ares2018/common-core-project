@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.aliya.compat.ActivityOrientationCompat;
 import com.aliya.uimode.UiModeManager;
 import com.zjrb.core.R;
 import com.zjrb.core.permission.IPermissionOperate;
@@ -38,17 +39,15 @@ public abstract class BaseActivity extends LifecycleActivity implements IPermiss
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (!onSetupTheme()) {
-//            ThemeMode.fitActivityTheme(this);
-        }
         // 设置夜间模式 inflater factor
         UiModeManager.setInflaterFactor(getLayoutInflater());
-        super.onCreate(savedInstanceState);
         if (!onSetupScreenOrientation()) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 禁止横屏
+            // 代码兼容性设置屏幕方向，修复 Android O Bug
+            ActivityOrientationCompat.setRequestedOrientation(this,
+                    ActivityInfo.SCREEN_ORIENTATION_PORTRAIT, false);
         }
+        super.onCreate(savedInstanceState);
         AppManager.get().addActivity(this);
-//        mAnalytics = new Analytics.AnalyticsBuilder(this, "A0010", "A0010").build();
     }
 
     /**
@@ -57,15 +56,6 @@ public abstract class BaseActivity extends LifecycleActivity implements IPermiss
      * @return true:表示不走代码设置
      */
     public boolean onSetupScreenOrientation() {
-        return false;
-    }
-
-    /**
-     * 设置主题 回调方法
-     *
-     * @return true：Base里面不用处理
-     */
-    protected boolean onSetupTheme() {
         return false;
     }
 
