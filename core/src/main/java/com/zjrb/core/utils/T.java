@@ -5,6 +5,8 @@ import android.support.annotation.IntDef;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.aliya.compat.ToastContext;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.ref.WeakReference;
@@ -26,6 +28,10 @@ public class T {
 
     public static boolean isShow = true;
 
+    private static Context getCompatContext(Context context) {
+        return ToastContext.compatContext(context);
+    }
+
     /**
      * 短时间显示Toast
      *
@@ -34,7 +40,7 @@ public class T {
      */
     public static void showShort(Context context, CharSequence message) {
         if (isShow && !TextUtils.isEmpty(message))
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getCompatContext(context), message, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -44,7 +50,7 @@ public class T {
      * @param message 为空不现实
      */
     public static void showShortNow(Context context, CharSequence message) {
-        showNow(context, message, Toast.LENGTH_SHORT);
+        showNow(getCompatContext(context), message, Toast.LENGTH_SHORT);
     }
 
     /**
@@ -55,7 +61,7 @@ public class T {
      */
     public static void showShort(Context context, int message) {
         if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getCompatContext(context), message, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -65,7 +71,7 @@ public class T {
      * @param message 文本
      */
     public static void showShortNow(Context context, int message) {
-        showNow(context, message, Toast.LENGTH_SHORT);
+        showNow(getCompatContext(context), message, Toast.LENGTH_SHORT);
     }
 
     /**
@@ -76,7 +82,7 @@ public class T {
      */
     public static void showLong(Context context, CharSequence message) {
         if (isShow && !TextUtils.isEmpty(message))
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(getCompatContext(context), message, Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -86,7 +92,7 @@ public class T {
      * @param message 为空不现实
      */
     public static void showLongNow(Context context, CharSequence message) {
-        showNow(context, message, Toast.LENGTH_LONG);
+        showNow(getCompatContext(context), message, Toast.LENGTH_LONG);
     }
 
     /**
@@ -97,7 +103,7 @@ public class T {
      */
     public static void showLong(Context context, int message) {
         if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(getCompatContext(context), message, Toast.LENGTH_LONG).show();
     }
 
 
@@ -108,7 +114,7 @@ public class T {
      * @param message 文本
      */
     public static void showLongNow(Context context, int message) {
-        showNow(context, message, Toast.LENGTH_LONG);
+        showNow(getCompatContext(context), message, Toast.LENGTH_LONG);
     }
 
     /**
@@ -120,7 +126,7 @@ public class T {
      */
     public static void show(Context context, CharSequence message, int duration) {
         if (isShow && !TextUtils.isEmpty(message))
-            Toast.makeText(context, message, duration).show();
+            Toast.makeText(getCompatContext(context), message, duration).show();
     }
 
     /**
@@ -135,7 +141,7 @@ public class T {
             if (TextUtils.isEmpty(message))
                 return;
             if (isShow) {
-                getToast(context, message, duration).show();
+                getToast(getCompatContext(context), message, duration).show();
             }
         }
     }
@@ -159,7 +165,7 @@ public class T {
      */
     public static void show(Context context, int message, int duration) {
         if (isShow)
-            Toast.makeText(context, message, duration).show();
+            Toast.makeText(getCompatContext(context), message, duration).show();
     }
 
     /**
@@ -171,7 +177,7 @@ public class T {
      */
     public static void showNow(Context context, int message, @Duration int duration) {
         if (isShow) {
-            getToast(context, context.getString(message), duration).show();
+            getToast(getCompatContext(context), context.getString(message), duration).show();
         }
     }
 
@@ -190,7 +196,7 @@ public class T {
                 return toast;
             }
         }
-        toast = Toast.makeText(context, message, duration);
+        toast = Toast.makeText(getCompatContext(context), message, duration);
         toastWeak = new WeakReference<>(toast);
 
         return toast;
